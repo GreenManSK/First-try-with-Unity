@@ -1,4 +1,7 @@
-﻿using UnityEngine;
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using UnityEngine;
 
 enum MoveType
 {
@@ -12,7 +15,8 @@ public class PlayerController : MonoBehaviour
     private const float ToolDistance = .7f;
 
     public float moveSpeed = 5f;
-    public GameObject toolPrefab;
+    public GameObject activeTool;
+    public List<GameObject> tools;
 
     private PlayerControlls _controlls;
     private Rigidbody2D _rigidbody2D;
@@ -20,11 +24,16 @@ public class PlayerController : MonoBehaviour
     private Vector2 _movement = Vector2.zero;
 
     private bool _usingTool = false;
+    private int _activeToolIndex = 0;
 
     // Start is called before the first frame update
     void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        if (tools.Count > 0)
+        {
+            activeTool = tools.First();
+        }
     }
 
     private void OnEnable()
@@ -41,6 +50,18 @@ public class PlayerController : MonoBehaviour
 
         _controlls.Gameplay.Stab.performed += ctx => UseTool(MoveType.Stab);
         _controlls.Gameplay.Swing.performed += ctx => UseTool(MoveType.Swing);
+
+        _controlls.Gameplay.ToolChange.performed += ctx => ChangeTool(ctx.ReadValue<float>() > 0);
+        _controlls.Gameplay.ToolNext.performed += ctx => ChangeTool(true);
+        _controlls.Gameplay.ToolPrev.performed += ctx => ChangeTool(false);
+    }
+
+    private void ChangeTool(bool next)
+    {
+        if (tools.Count == 0)
+            return;
+        _activeToolIndex = (_activeToolIndex + (next ? 1 : -1) + tools.Count) % tools.Count;
+        activeTool = tools[_activeToolIndex];
     }
 
     private void FixedUpdate()
@@ -58,11 +79,11 @@ public class PlayerController : MonoBehaviour
 
     private void UseTool(MoveType type)
     {
-        if (_usingTool)
+        if (_usingTool || activeTool == null)
             return;
         Vector2 rotationVector = Quaternion.Euler(0, 0, _rigidbody2D.rotation) * Vector2.down;
         var toolGameObject = Instantiate(
-            toolPrefab,
+            activeTool,
             _rigidbody2D.position + rotationVector * ToolDistance,
             Quaternion.Euler(0, 0, _rigidbody2D.rotation + 180f)
         );

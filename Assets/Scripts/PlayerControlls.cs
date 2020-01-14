@@ -27,22 +27,6 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Direction"",
-                    ""type"": ""Button"",
-                    ""id"": ""81153b44-a237-479c-b35a-97275128f676"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
-                    ""name"": ""MousePosition"",
-                    ""type"": ""Button"",
-                    ""id"": ""b2f62ded-3a30-4206-84b5-600754ba2984"",
-                    ""expectedControlType"": """",
-                    ""processors"": """",
-                    ""interactions"": """"
-                },
-                {
                     ""name"": ""Stab"",
                     ""type"": ""Button"",
                     ""id"": ""d4e19460-e4e1-46dc-a46f-11dcd2717a8f"",
@@ -54,6 +38,30 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""name"": ""Swing"",
                     ""type"": ""Button"",
                     ""id"": ""2394f2b4-4296-41a8-b19a-35f11483832f"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToolChange"",
+                    ""type"": ""Button"",
+                    ""id"": ""c0b9c0f4-5e66-4d98-9675-caabd21f7590"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToolNext"",
+                    ""type"": ""Button"",
+                    ""id"": ""0d467c61-4e2d-4b62-a3e9-73398388eda3"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToolPrev"",
+                    ""type"": ""Button"",
+                    ""id"": ""39b73978-9025-4bfd-ad06-a5eff067f196"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -183,23 +191,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""76f13b88-53d2-44b6-a1d0-5151ff5a1c53"",
-                    ""path"": ""<Gamepad>/rightStick"",
+                    ""id"": ""a360d89a-1784-450c-953d-554be75dffc3"",
+                    ""path"": ""<Gamepad>/dpad"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Direction"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""d0f40e3c-a84b-4995-aa2c-97a543d9a432"",
-                    ""path"": ""<Mouse>/position"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""MousePosition"",
+                    ""action"": ""Move"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -290,6 +287,83 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""Swing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""f4794d03-64f0-4eec-8991-d144c02f9c2a"",
+                    ""path"": ""<Mouse>/scroll/y"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolChange"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""18ed842a-d175-4450-8ae3-b5ca10468829"",
+                    ""path"": ""<Gamepad>/leftShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e629bc02-37e5-4bfd-862c-d12fd72a96a5"",
+                    ""path"": ""<Keyboard>/1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""fba79517-1c59-4501-a0ca-f61beb45755f"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolNext"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d3b5428b-1e7a-465c-994b-e8ff9e6c2277"",
+                    ""path"": ""<Gamepad>/rightShoulder"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolPrev"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d35172c1-9da7-4ac9-914e-4dd3bb426ff8"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolPrev"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""e0b49d5e-2f64-470f-b3e0-26e716d2e2b1"",
+                    ""path"": ""<Keyboard>/numpad2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolPrev"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -299,10 +373,11 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_Direction = m_Gameplay.FindAction("Direction", throwIfNotFound: true);
-        m_Gameplay_MousePosition = m_Gameplay.FindAction("MousePosition", throwIfNotFound: true);
         m_Gameplay_Stab = m_Gameplay.FindAction("Stab", throwIfNotFound: true);
         m_Gameplay_Swing = m_Gameplay.FindAction("Swing", throwIfNotFound: true);
+        m_Gameplay_ToolChange = m_Gameplay.FindAction("ToolChange", throwIfNotFound: true);
+        m_Gameplay_ToolNext = m_Gameplay.FindAction("ToolNext", throwIfNotFound: true);
+        m_Gameplay_ToolPrev = m_Gameplay.FindAction("ToolPrev", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -353,19 +428,21 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_Direction;
-    private readonly InputAction m_Gameplay_MousePosition;
     private readonly InputAction m_Gameplay_Stab;
     private readonly InputAction m_Gameplay_Swing;
+    private readonly InputAction m_Gameplay_ToolChange;
+    private readonly InputAction m_Gameplay_ToolNext;
+    private readonly InputAction m_Gameplay_ToolPrev;
     public struct GameplayActions
     {
         private @PlayerControlls m_Wrapper;
         public GameplayActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @Direction => m_Wrapper.m_Gameplay_Direction;
-        public InputAction @MousePosition => m_Wrapper.m_Gameplay_MousePosition;
         public InputAction @Stab => m_Wrapper.m_Gameplay_Stab;
         public InputAction @Swing => m_Wrapper.m_Gameplay_Swing;
+        public InputAction @ToolChange => m_Wrapper.m_Gameplay_ToolChange;
+        public InputAction @ToolNext => m_Wrapper.m_Gameplay_ToolNext;
+        public InputAction @ToolPrev => m_Wrapper.m_Gameplay_ToolPrev;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -378,18 +455,21 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Direction.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDirection;
-                @Direction.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDirection;
-                @Direction.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnDirection;
-                @MousePosition.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMousePosition;
-                @MousePosition.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMousePosition;
-                @MousePosition.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMousePosition;
                 @Stab.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStab;
                 @Stab.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStab;
                 @Stab.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStab;
                 @Swing.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwing;
                 @Swing.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwing;
                 @Swing.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwing;
+                @ToolChange.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChange;
+                @ToolChange.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChange;
+                @ToolChange.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChange;
+                @ToolNext.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
+                @ToolNext.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
+                @ToolNext.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
+                @ToolPrev.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolPrev;
+                @ToolPrev.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolPrev;
+                @ToolPrev.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolPrev;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -397,18 +477,21 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Direction.started += instance.OnDirection;
-                @Direction.performed += instance.OnDirection;
-                @Direction.canceled += instance.OnDirection;
-                @MousePosition.started += instance.OnMousePosition;
-                @MousePosition.performed += instance.OnMousePosition;
-                @MousePosition.canceled += instance.OnMousePosition;
                 @Stab.started += instance.OnStab;
                 @Stab.performed += instance.OnStab;
                 @Stab.canceled += instance.OnStab;
                 @Swing.started += instance.OnSwing;
                 @Swing.performed += instance.OnSwing;
                 @Swing.canceled += instance.OnSwing;
+                @ToolChange.started += instance.OnToolChange;
+                @ToolChange.performed += instance.OnToolChange;
+                @ToolChange.canceled += instance.OnToolChange;
+                @ToolNext.started += instance.OnToolNext;
+                @ToolNext.performed += instance.OnToolNext;
+                @ToolNext.canceled += instance.OnToolNext;
+                @ToolPrev.started += instance.OnToolPrev;
+                @ToolPrev.performed += instance.OnToolPrev;
+                @ToolPrev.canceled += instance.OnToolPrev;
             }
         }
     }
@@ -416,9 +499,10 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnDirection(InputAction.CallbackContext context);
-        void OnMousePosition(InputAction.CallbackContext context);
         void OnStab(InputAction.CallbackContext context);
         void OnSwing(InputAction.CallbackContext context);
+        void OnToolChange(InputAction.CallbackContext context);
+        void OnToolNext(InputAction.CallbackContext context);
+        void OnToolPrev(InputAction.CallbackContext context);
     }
 }
