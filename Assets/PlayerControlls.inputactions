@@ -38,7 +38,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ToolNext",
+                    "name": "ToolPrev",
                     "type": "Button",
                     "id": "0d467c61-4e2d-4b62-a3e9-73398388eda3",
                     "expectedControlType": "",
@@ -46,7 +46,7 @@
                     "interactions": ""
                 },
                 {
-                    "name": "ToolPrev",
+                    "name": "ToolNext",
                     "type": "Button",
                     "id": "39b73978-9025-4bfd-ad06-a5eff067f196",
                     "expectedControlType": "",
@@ -293,7 +293,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToolNext",
+                    "action": "ToolPrev",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -304,7 +304,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToolNext",
+                    "action": "ToolPrev",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -315,7 +315,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToolNext",
+                    "action": "ToolPrev",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -326,7 +326,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToolPrev",
+                    "action": "ToolNext",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -337,7 +337,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToolPrev",
+                    "action": "ToolNext",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
@@ -348,7 +348,7 @@
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToolPrev",
+                    "action": "ToolNext",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

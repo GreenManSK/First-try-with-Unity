@@ -1,19 +1,19 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using Hud;
-using UnityEngine;
+﻿using UnityEngine;
 
-public abstract class ASubHudController : MonoBehaviour
+namespace Hud
 {
-    public HudController HudController;
-
-    public float x;
-    public float y;
-    public float width;
-    public float height;
-
-    protected void Start()
+    public abstract class ASubHudController : MonoBehaviour
     {
-        transform.position = new Vector3(x - width, height - y, 0);
+        public HudController HudController;
+
+        protected float X;
+        protected float Y;
+        protected float Width;
+        protected float Height;
+
+        protected void Start()
+        {
+            transform.position = new Vector3(X - Width, Height - Y, 0);
+        }
     }
 }

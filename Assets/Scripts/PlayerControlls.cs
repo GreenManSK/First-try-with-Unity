@@ -51,7 +51,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""ToolNext"",
+                    ""name"": ""ToolPrev"",
                     ""type"": ""Button"",
                     ""id"": ""0d467c61-4e2d-4b62-a3e9-73398388eda3"",
                     ""expectedControlType"": """",
@@ -59,7 +59,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""ToolPrev"",
+                    ""name"": ""ToolNext"",
                     ""type"": ""Button"",
                     ""id"": ""39b73978-9025-4bfd-ad06-a5eff067f196"",
                     ""expectedControlType"": """",
@@ -306,7 +306,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToolNext"",
+                    ""action"": ""ToolPrev"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -317,7 +317,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToolNext"",
+                    ""action"": ""ToolPrev"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -328,7 +328,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToolNext"",
+                    ""action"": ""ToolPrev"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -339,7 +339,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToolPrev"",
+                    ""action"": ""ToolNext"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -350,7 +350,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToolPrev"",
+                    ""action"": ""ToolNext"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -361,7 +361,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToolPrev"",
+                    ""action"": ""ToolNext"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -376,8 +376,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_Gameplay_Stab = m_Gameplay.FindAction("Stab", throwIfNotFound: true);
         m_Gameplay_Swing = m_Gameplay.FindAction("Swing", throwIfNotFound: true);
         m_Gameplay_ToolChange = m_Gameplay.FindAction("ToolChange", throwIfNotFound: true);
-        m_Gameplay_ToolNext = m_Gameplay.FindAction("ToolNext", throwIfNotFound: true);
         m_Gameplay_ToolPrev = m_Gameplay.FindAction("ToolPrev", throwIfNotFound: true);
+        m_Gameplay_ToolNext = m_Gameplay.FindAction("ToolNext", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -431,8 +431,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_Stab;
     private readonly InputAction m_Gameplay_Swing;
     private readonly InputAction m_Gameplay_ToolChange;
-    private readonly InputAction m_Gameplay_ToolNext;
     private readonly InputAction m_Gameplay_ToolPrev;
+    private readonly InputAction m_Gameplay_ToolNext;
     public struct GameplayActions
     {
         private @PlayerControlls m_Wrapper;
@@ -441,8 +441,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @Stab => m_Wrapper.m_Gameplay_Stab;
         public InputAction @Swing => m_Wrapper.m_Gameplay_Swing;
         public InputAction @ToolChange => m_Wrapper.m_Gameplay_ToolChange;
-        public InputAction @ToolNext => m_Wrapper.m_Gameplay_ToolNext;
         public InputAction @ToolPrev => m_Wrapper.m_Gameplay_ToolPrev;
+        public InputAction @ToolNext => m_Wrapper.m_Gameplay_ToolNext;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -464,12 +464,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @ToolChange.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChange;
                 @ToolChange.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChange;
                 @ToolChange.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChange;
-                @ToolNext.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
-                @ToolNext.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
-                @ToolNext.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
                 @ToolPrev.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolPrev;
                 @ToolPrev.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolPrev;
                 @ToolPrev.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolPrev;
+                @ToolNext.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
+                @ToolNext.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
+                @ToolNext.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -486,12 +486,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @ToolChange.started += instance.OnToolChange;
                 @ToolChange.performed += instance.OnToolChange;
                 @ToolChange.canceled += instance.OnToolChange;
-                @ToolNext.started += instance.OnToolNext;
-                @ToolNext.performed += instance.OnToolNext;
-                @ToolNext.canceled += instance.OnToolNext;
                 @ToolPrev.started += instance.OnToolPrev;
                 @ToolPrev.performed += instance.OnToolPrev;
                 @ToolPrev.canceled += instance.OnToolPrev;
+                @ToolNext.started += instance.OnToolNext;
+                @ToolNext.performed += instance.OnToolNext;
+                @ToolNext.canceled += instance.OnToolNext;
             }
         }
     }
@@ -502,7 +502,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnStab(InputAction.CallbackContext context);
         void OnSwing(InputAction.CallbackContext context);
         void OnToolChange(InputAction.CallbackContext context);
-        void OnToolNext(InputAction.CallbackContext context);
         void OnToolPrev(InputAction.CallbackContext context);
+        void OnToolNext(InputAction.CallbackContext context);
     }
 }

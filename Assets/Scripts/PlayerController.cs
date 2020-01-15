@@ -14,10 +14,14 @@ public class PlayerController : MonoBehaviour
 {
     private const float ToolDistance = .7f;
 
+    public delegate void ToolChangeDelegate(int activeIndex);
+    
     public float moveSpeed = 5f;
     public GameObject activeTool;
     public List<GameObject> tools;
-
+    
+    public event ToolChangeDelegate toolChanged;
+    
     private PlayerControlls _controlls;
     private Rigidbody2D _rigidbody2D;
 
@@ -34,6 +38,11 @@ public class PlayerController : MonoBehaviour
         {
             activeTool = tools.First();
         }
+    }
+
+    public int GetActiveToolIndex()
+    {
+        return _activeToolIndex;
     }
 
     private void OnEnable()
@@ -62,6 +71,7 @@ public class PlayerController : MonoBehaviour
             return;
         _activeToolIndex = (_activeToolIndex + (next ? 1 : -1) + tools.Count) % tools.Count;
         activeTool = tools[_activeToolIndex];
+        toolChanged?.Invoke(_activeToolIndex);
     }
 
     private void FixedUpdate()

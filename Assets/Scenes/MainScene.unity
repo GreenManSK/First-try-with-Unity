@@ -252,10 +252,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   HudController: {fileID: 2041613876}
-  x: 0
-  y: 0
-  width: 0
-  height: 0
+  Player: {fileID: 195627983}
+  ToolsHudWindowPrefab: {fileID: 7994397343948943539, guid: 56decce5b9fb11343b16bfc5f12f87b2,
+    type: 3}
 --- !u!1 &178424216 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 5683341836517881814, guid: f337054927371264aaf7a4079d0a182b,
@@ -372,6 +371,18 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &195627983 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 1108613781533281021, guid: b06ebdf86a14d03478d1ee43788011ba,
+    type: 3}
+  m_PrefabInstance: {fileID: 1108613781196320941}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eef81a277ec029b42898c2b41b617856, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!4 &195627986 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 1108613781533281022, guid: b06ebdf86a14d03478d1ee43788011ba,
