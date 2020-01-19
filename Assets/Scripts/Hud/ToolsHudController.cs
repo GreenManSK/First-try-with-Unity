@@ -37,7 +37,7 @@ namespace Hud
                 hudWindow.SetActive(false);
                 _windows.Add(hudWindow);
             }
-            Player.toolChanged += RefreshWindows;
+            Player.ToolChanged += RefreshWindows;
             _windows[Player.GetActiveToolIndex()].SetActive(true);
         }
 

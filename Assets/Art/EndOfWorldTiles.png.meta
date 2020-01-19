@@ -1,31 +1,34 @@
 fileFormatVersion: 2
-guid: 57827e4eed391204ebee54f20bcbbcd8
+guid: a0fd3ae533340624d908170095ccf8ef
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -2311659948842064771
-    second: Player_0
+      213: 2961267197315988105
+    second: EndOfWorldTiles_0
   - first:
-      213: 7364682651488144517
-    second: Player_1
+      213: 5241649460732171793
+    second: EndOfWorldTiles_1
   - first:
-      213: -6287787046888575383
-    second: Player_2
+      213: -877740998855382370
+    second: EndOfWorldTiles_2
   - first:
-      213: -1182821291677670348
-    second: Player_3
+      213: -6976004052364347174
+    second: EndOfWorldTiles_3
   - first:
-      213: -4709456396536258026
-    second: Player_4
+      213: -6556559440090553713
+    second: EndOfWorldTiles_4
   - first:
-      213: -4529042392078601758
-    second: Player_5
+      213: 3134629048206826427
+    second: EndOfWorldTiles_5
   - first:
-      213: -7446026091647042388
-    second: Player_6
+      213: 5109372595095716271
+    second: EndOfWorldTiles_6
   - first:
-      213: 5938012242645255967
-    second: Player_7
+      213: -5365685680662443905
+    second: EndOfWorldTiles_7
+  - first:
+      213: -6642078223315624035
+    second: EndOfWorldTiles_8
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -122,49 +125,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Player_0
-      rect:
-        serializedVersion: 2
-        x: 0
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: 90e9f80a51ddeea4b9e9fa2d41d798aa
-      internalID: -2311659948842064771
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_1
-      rect:
-        serializedVersion: 2
-        x: 16
-        y: 48
-        width: 16
-        height: 16
-      alignment: 0
-      pivot: {x: 0, y: 0}
-      border: {x: 0, y: 0, z: 0, w: 0}
-      outline: []
-      physicsShape: []
-      tessellationDetail: 0
-      bones: []
-      spriteID: ba9c63c636889ba4da770fd661696da5
-      internalID: 7364682651488144517
-      vertices: []
-      indices: 
-      edges: []
-      weights: []
-    - serializedVersion: 2
-      name: Player_2
+      name: EndOfWorldTiles_0
       rect:
         serializedVersion: 2
         x: 0
@@ -178,14 +139,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7ce3d78d8a5662c4489bd671efd39c3f
-      internalID: -6287787046888575383
+      spriteID: ca4261a2ec18e284d9816dd787e5e170
+      internalID: 2961267197315988105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_3
+      name: EndOfWorldTiles_1
       rect:
         serializedVersion: 2
         x: 16
@@ -199,14 +160,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 7cbd0306b91fbe04f80e756365ca8a2c
-      internalID: -1182821291677670348
+      spriteID: e78df8bf97612754e9c47d0a217e4929
+      internalID: 5241649460732171793
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_4
+      name: EndOfWorldTiles_2
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 32
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14bb205ea300bbb4bb10c3b4b57e9499
+      internalID: -877740998855382370
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndOfWorldTiles_3
       rect:
         serializedVersion: 2
         x: 0
@@ -220,14 +202,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1551a7bdfc430b34bb4c7b01f8dc372b
-      internalID: -4709456396536258026
+      spriteID: 1d94393a1c941f144a3612c568cb3fa4
+      internalID: -6976004052364347174
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_5
+      name: EndOfWorldTiles_4
       rect:
         serializedVersion: 2
         x: 16
@@ -241,14 +223,35 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 60ed44c2abfdfcb42a63d67bf680b213
-      internalID: -4529042392078601758
+      spriteID: 6d014ef7b1feded4d8268f78148c2311
+      internalID: -6556559440090553713
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_6
+      name: EndOfWorldTiles_5
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2fd303f63e422524ba2c2460f2b77619
+      internalID: 3134629048206826427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndOfWorldTiles_6
       rect:
         serializedVersion: 2
         x: 0
@@ -262,14 +265,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: fdc1b9fe97f4d5e44882b69e905af0ca
-      internalID: -7446026091647042388
+      spriteID: d4570bcaa2cfcbd4d88779f8ad420e85
+      internalID: 5109372595095716271
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: Player_7
+      name: EndOfWorldTiles_7
       rect:
         serializedVersion: 2
         x: 16
@@ -283,8 +286,29 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: b42fa925075d70b4dbcd74b15e0e05d1
-      internalID: 5938012242645255967
+      spriteID: f1a61eedeac0fe44a905e6ec738134eb
+      internalID: -5365685680662443905
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: EndOfWorldTiles_8
+      rect:
+        serializedVersion: 2
+        x: 32
+        y: 0
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c866321f270724e4aa432c5bf7b14cdc
+      internalID: -6642078223315624035
       vertices: []
       indices: 
       edges: []

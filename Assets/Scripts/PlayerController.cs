@@ -13,6 +13,8 @@ enum MoveType
 public class PlayerController : MonoBehaviour
 {
     private const float ToolDistance = .7f;
+    private static readonly int AnimatorMoveX = Animator.StringToHash("Move X");
+    private static readonly int AnimatorMoveY = Animator.StringToHash("Move Y");
 
     public delegate void ToolChangeDelegate(int activeIndex);
     
@@ -20,20 +22,23 @@ public class PlayerController : MonoBehaviour
     public GameObject activeTool;
     public List<GameObject> tools;
     
-    public event ToolChangeDelegate toolChanged;
+    public event ToolChangeDelegate ToolChanged;
     
     private PlayerControlls _controlls;
     private Rigidbody2D _rigidbody2D;
+    private Animator _animator;
 
     private Vector2 _movement = Vector2.zero;
+    private float _rotation = 0f;
 
     private bool _usingTool = false;
     private int _activeToolIndex = 0;
 
     // Start is called before the first frame update
-    void Start()
+    private void Start()
     {
         _rigidbody2D = GetComponent<Rigidbody2D>();
+        _animator = GetComponentInChildren<Animator>();
         if (tools.Count > 0)
         {
             activeTool = tools.First();
@@ -71,19 +76,25 @@ public class PlayerController : MonoBehaviour
             return;
         _activeToolIndex = (_activeToolIndex + (next ? 1 : -1) + tools.Count) % tools.Count;
         activeTool = tools[_activeToolIndex];
-        toolChanged?.Invoke(_activeToolIndex);
+        ToolChanged?.Invoke(_activeToolIndex);
+    }
+
+    private void Update()
+    {
+        if (_usingTool || _movement == Vector2.zero)
+            return;
+        _animator.SetFloat(AnimatorMoveX, _movement.x);
+        _animator.SetFloat(AnimatorMoveY, _movement.y);
     }
 
     private void FixedUpdate()
     {
         if (_usingTool)
             return;
-        _rigidbody2D.MovePosition(_rigidbody2D.position + _movement * moveSpeed * Time.fixedDeltaTime);
-
+        _rigidbody2D.MovePosition(_rigidbody2D.position + moveSpeed * Time.fixedDeltaTime * _movement);
         if (_movement != Vector2.zero)
         {
-            var angle = Mathf.Round((Mathf.Atan2(_movement.y, _movement.x) * Mathf.Rad2Deg + 90f) / 90f) * 90f;
-            _rigidbody2D.rotation = angle;
+            _rotation = Mathf.Round((Mathf.Atan2(_movement.y, _movement.x) * Mathf.Rad2Deg + 90f) / 90f) * 90f;
         }
     }
 
@@ -91,11 +102,11 @@ public class PlayerController : MonoBehaviour
     {
         if (_usingTool || activeTool == null)
             return;
-        Vector2 rotationVector = Quaternion.Euler(0, 0, _rigidbody2D.rotation) * Vector2.down;
+        Vector2 rotationVector = Quaternion.Euler(0, 0, _rotation) * Vector2.down;
         var toolGameObject = Instantiate(
             activeTool,
             _rigidbody2D.position + rotationVector * ToolDistance,
-            Quaternion.Euler(0, 0, _rigidbody2D.rotation + 180f)
+            Quaternion.Euler(0, 0, _rotation + 180f)
         );
 
         var tool = toolGameObject.GetComponent<ToolController>();
@@ -111,6 +122,8 @@ public class PlayerController : MonoBehaviour
             case MoveType.Stab:
                 tool.Stab();
                 break;
+            default:
+                throw new ArgumentOutOfRangeException(nameof(type), type, null);
         }
     }
 }
