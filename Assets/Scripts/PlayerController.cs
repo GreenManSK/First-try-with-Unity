@@ -1,9 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Tools;
 using UnityEngine;
 
-enum MoveType
+internal enum MoveType
 {
     Stab,
     Swing
@@ -29,10 +30,10 @@ public class PlayerController : MonoBehaviour
     private Animator _animator;
 
     private Vector2 _movement = Vector2.zero;
-    private float _rotation = 0f;
+    private float _rotation;
 
-    private bool _usingTool = false;
-    private int _activeToolIndex = 0;
+    private bool _usingTool;
+    private int _activeToolIndex;
 
     // Start is called before the first frame update
     private void Start()

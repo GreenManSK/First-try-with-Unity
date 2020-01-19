@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class SnapToGrid : MonoBehaviour
 {
@@ -8,7 +6,7 @@ public class SnapToGrid : MonoBehaviour
     public bool snapToGrid = true;
     public float snapValue = 1.0f;
  
-    public bool sizeToGrid = false;
+    public bool sizeToGrid;
     public float sizeValue = 1.0f;
 #endif
 }

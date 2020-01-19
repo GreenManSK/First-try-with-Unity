@@ -1,15 +1,13 @@
 ﻿using System;
-using System.Collections;
-using System.Collections.Generic;
 using RotaryHeart.Lib.SerializableDictionary;
+using Tools;
 using UnityEngine;
-using UnityEngine.Serialization;
 
 public class MineableController : MonoBehaviour
 {
     private static readonly int AnimationTime = Animator.StringToHash("Time");
     
-    public EffectivityDictionary effectivity = new EffectivityDictionary()
+    public EffectivityDictionary effectivity = new EffectivityDictionary
     {
         {ToolType.Axe, 1f},
         {ToolType.Pickaxe, 1f},
@@ -66,7 +64,7 @@ public class MineableController : MonoBehaviour
     }
 }
 
-[System.Serializable]
+[Serializable]
 public class EffectivityDictionary : SerializableDictionaryBase<ToolType, float>
 {
 }

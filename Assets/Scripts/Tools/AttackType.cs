@@ -1,9 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public enum AttackType
+﻿namespace Tools
 {
-    Swing,
-    Stab
+    public enum AttackType
+    {
+        Swing,
+        Stab
+    }
 }

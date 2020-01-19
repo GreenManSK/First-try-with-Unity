@@ -1,67 +1,71 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System;
+using Constants;
 using RotaryHeart.Lib.SerializableDictionary;
 using UnityEngine;
 
-public class ToolController : MonoBehaviour
+namespace Tools
 {
-    private static readonly int StabAnimationTrigger = Animator.StringToHash("Stab");
-    private static readonly int SwingAnimationTrigger = Animator.StringToHash("Swing");
-
-    public delegate void DestroyDelegate();
-
-    public event DestroyDelegate Destroyed;
-
-    public ToolType type;
-    public float basePower = 1f;
-    public AttackPowerDictionary attackPowers = new AttackPowerDictionary()
+    public class ToolController : MonoBehaviour
     {
-        {AttackType.Swing, 1f},
-        {AttackType.Stab, 1f}
-    };
-    
-    private Animator _animator;
-    private AttackType _attackType;
+        private static readonly int StabAnimationTrigger = Animator.StringToHash("Stab");
+        private static readonly int SwingAnimationTrigger = Animator.StringToHash("Swing");
 
-    public void Stab()
-    {
-        _attackType = AttackType.Stab;
-        _animator = GetComponent<Animator>();
-        _animator.SetTrigger(StabAnimationTrigger);
-    }
+        public delegate void DestroyDelegate();
 
-    public void Swing()
-    {
-        _attackType = AttackType.Swing;
-        _animator = GetComponent<Animator>();
-        _animator.SetTrigger(SwingAnimationTrigger);
-    }
+        public event DestroyDelegate Destroyed;
 
-    public void OnFinish()
-    {
-        Destroy(gameObject);
-    }
+        public ToolType type;
+        public float basePower = 1f;
 
-    public float GetPower()
-    {
-        return basePower * attackPowers[_attackType];
-    }
-
-    private void OnTriggerEnter2D(Collider2D other)
-    {
-        if (other.CompareTag(Constants.Layers.Destroyable))
+        public AttackPowerDictionary attackPowers = new AttackPowerDictionary
         {
-            other.GetComponent<MineableController>()?.Damage(this);
+            {AttackType.Swing, 1f},
+            {AttackType.Stab, 1f}
+        };
+
+        private Animator _animator;
+        private AttackType _attackType;
+
+        public void Stab()
+        {
+            _attackType = AttackType.Stab;
+            _animator = GetComponent<Animator>();
+            _animator.SetTrigger(StabAnimationTrigger);
+        }
+
+        public void Swing()
+        {
+            _attackType = AttackType.Swing;
+            _animator = GetComponent<Animator>();
+            _animator.SetTrigger(SwingAnimationTrigger);
+        }
+
+        public void OnFinish()
+        {
+            Destroy(gameObject);
+        }
+
+        public float GetPower()
+        {
+            return basePower * attackPowers[_attackType];
+        }
+
+        private void OnTriggerEnter2D(Collider2D other)
+        {
+            if (other.CompareTag(Layers.Destroyable))
+            {
+                other.GetComponent<MineableController>()?.Damage(this);
+            }
+        }
+
+        private void OnDestroy()
+        {
+            Destroyed?.Invoke();
         }
     }
 
-    private void OnDestroy()
+    [Serializable]
+    public class AttackPowerDictionary : SerializableDictionaryBase<AttackType, float>
     {
-        Destroyed?.Invoke();
     }
-}
-
-[System.Serializable]
-public class AttackPowerDictionary : SerializableDictionaryBase<AttackType, float>
-{
 }
