@@ -10,7 +10,10 @@ public class ToolController : MonoBehaviour
     public delegate void DestroyDelegate();
 
     public event DestroyDelegate destroyed;
-    
+
+    public ToolType Type;
+    public float Power = 1f;
+
     private Animator _animator;
 
     public void Stab()
@@ -18,7 +21,7 @@ public class ToolController : MonoBehaviour
         _animator = GetComponent<Animator>();
         _animator.SetTrigger(StabAnimationTrigger);
     }
-    
+
     public void Swing()
     {
         _animator = GetComponent<Animator>();
@@ -34,7 +37,7 @@ public class ToolController : MonoBehaviour
     {
         if (other.CompareTag(Constants.Layers.Destroyable))
         {
-            Destroy(other.gameObject);
+            other.GetComponent<MineableController>()?.Damage(this);
         }
     }
 
