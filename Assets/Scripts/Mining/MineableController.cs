@@ -35,10 +35,11 @@ public class MineableController : MonoBehaviour
         _animator = effect.GetComponent<Animator>();
         _animator.speed = 0f;
     }
+
     public void Damage(ToolController tool)
     {
         _durability -= tool.GetPower() * effectivity[tool.type];
-        _animator.SetFloat(AnimationTime, 0.7f * (1 - _durability / maxDurability) + 0.3f);
+        _animator.SetFloat(AnimationTime, 1 - _durability / maxDurability);
         if (_durability <= 0)
         {
             Destroy(gameObject);
