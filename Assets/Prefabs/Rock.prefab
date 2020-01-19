@@ -160,3 +160,5 @@ MonoBehaviour:
   maxDurability: 5
   damageAnimation: {fileID: 3176009523828583433, guid: 19aeefce8fed0d74bb521960505ff31f,
     type: 3}
+  miningEffect: {fileID: 5907427628545735993, guid: 6ea4770b59b7d7445b17e6384312f4af,
+    type: 3}

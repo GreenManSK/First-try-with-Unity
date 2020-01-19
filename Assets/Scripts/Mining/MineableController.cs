@@ -19,9 +19,11 @@ public class MineableController : MonoBehaviour
     public float maxDurability = 10.0f;
 
     public GameObject damageAnimation;
+    public GameObject miningEffect;
 
     private Animator _animator;
     private float _durability;
+    private ParticleSystem _miningParticles;
 
     private void Start()
     {
@@ -40,10 +42,27 @@ public class MineableController : MonoBehaviour
     {
         _durability -= tool.GetPower() * effectivity[tool.type];
         _animator.SetFloat(AnimationTime, 1 - _durability / maxDurability);
+        EmitParticles();
         if (_durability <= 0)
         {
             Destroy(gameObject);
         }
+    }
+
+    private void EmitParticles()
+    {
+        if (_miningParticles == null)
+        {
+            var effect = Instantiate(
+                miningEffect,
+                transform.position,
+                Quaternion.identity
+            );
+            effect.transform.parent = transform;
+            _miningParticles = effect.GetComponent<ParticleSystem>();
+        }
+        _miningParticles.Clear();
+        _miningParticles.Play();
     }
 }
 
