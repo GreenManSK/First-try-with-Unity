@@ -158,3 +158,5 @@ MonoBehaviour:
     - 1
     - 0.2
   maxDurability: 5
+  damageAnimation: {fileID: 3176009523828583433, guid: 19aeefce8fed0d74bb521960505ff31f,
+    type: 3}
