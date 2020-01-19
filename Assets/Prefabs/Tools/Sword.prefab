@@ -46,6 +46,36 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9e58cda060f7b094a9f500bb6ca11754, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  type: 0
+  basePower: 1
+  attackPowers:
+    reorderableList:
+      canAdd: 1
+      canRemove: 1
+      draggable: 1
+      expandable: 1
+      multipleSelection: 1
+      isExpanded: 1
+      label:
+        m_Text: Keys
+        m_Image: {fileID: 0}
+        m_Tooltip: 
+      headerHeight: 18
+      footerHeight: 13
+      slideEasing: 0.15
+      verticalSpacing: 2
+      showDefaultBackground: 1
+      elementDisplayType: 0
+      elementNameProperty: 
+      elementNameOverride: 
+      elementIcon: {fileID: 0}
+    reqReferences: {fileID: 0}
+    isExpanded: 1
+    _keyValues: 0000000001000000
+    _keys: 0000000001000000
+    _values:
+    - 0.8
+    - 1.2
 --- !u!95 &6453016149459970666
 Animator:
   serializedVersion: 3

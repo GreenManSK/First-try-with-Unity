@@ -154,6 +154,7 @@ MonoBehaviour:
     _keyValues: 010000000200000000000000
     _keys: 010000000200000000000000
     _values:
+    - 0.3
     - 1
-    - 1
-    - 1
+    - 0.2
+  maxDurability: 5

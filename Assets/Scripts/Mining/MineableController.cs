@@ -3,6 +3,7 @@ using System.Collections;
 using System.Collections.Generic;
 using RotaryHeart.Lib.SerializableDictionary;
 using UnityEngine;
+using UnityEngine.Serialization;
 
 public class MineableController : MonoBehaviour
 {
@@ -13,18 +14,18 @@ public class MineableController : MonoBehaviour
         {ToolType.Sword, 1f}
     };
 
-    public float MaxDurability = 10.0f;
+    public float maxDurability = 10.0f;
 
     private float _durability;
 
     private void Start()
     {
-        _durability = MaxDurability;
+        _durability = maxDurability;
     }
 
     public void Damage(ToolController tool)
     {
-        _durability -= tool.Power * effectivity[tool.Type];
+        _durability -= tool.GetPower() * effectivity[tool.type];
         if (_durability <= 0)
         {
             Destroy(gameObject);

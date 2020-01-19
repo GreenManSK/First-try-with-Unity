@@ -113,7 +113,7 @@ public class PlayerController : MonoBehaviour
         if (!tool) return;
 
         _usingTool = true;
-        tool.destroyed += () => _usingTool = false;
+        tool.Destroyed += () => _usingTool = false;
         switch (type)
         {
             case MoveType.Swing:
