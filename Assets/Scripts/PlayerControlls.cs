@@ -5,7 +5,6 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine.InputSystem;
 using UnityEngine.InputSystem.Utilities;
-using Object = UnityEngine.Object;
 
 public class @PlayerControlls : IInputActionCollection, IDisposable
 {
@@ -63,6 +62,14 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""name"": ""ToolNext"",
                     ""type"": ""Button"",
                     ""id"": ""39b73978-9025-4bfd-ad06-a5eff067f196"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
+                },
+                {
+                    ""name"": ""ToolChangeNumbers"",
+                    ""type"": ""Button"",
+                    ""id"": ""657fc9c9-7ce9-4008-9b9c-34291e2e2a4f"",
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
@@ -313,28 +320,6 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e629bc02-37e5-4bfd-862c-d12fd72a96a5"",
-                    ""path"": ""<Keyboard>/1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ToolPrev"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
-                    ""id"": ""fba79517-1c59-4501-a0ca-f61beb45755f"",
-                    ""path"": ""<Keyboard>/numpad1"",
-                    ""interactions"": """",
-                    ""processors"": """",
-                    ""groups"": """",
-                    ""action"": ""ToolPrev"",
-                    ""isComposite"": false,
-                    ""isPartOfComposite"": false
-                },
-                {
-                    ""name"": """",
                     ""id"": ""d3b5428b-1e7a-465c-994b-e8ff9e6c2277"",
                     ""path"": ""<Gamepad>/rightShoulder"",
                     ""interactions"": """",
@@ -346,23 +331,67 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 },
                 {
                     ""name"": """",
-                    ""id"": ""d35172c1-9da7-4ac9-914e-4dd3bb426ff8"",
-                    ""path"": ""<Keyboard>/2"",
+                    ""id"": ""0bef09e5-7223-4aed-a619-e896d86f591c"",
+                    ""path"": ""<Keyboard>/1"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToolNext"",
+                    ""action"": ""ToolChangeNumbers"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
                 {
                     ""name"": """",
-                    ""id"": ""e0b49d5e-2f64-470f-b3e0-26e716d2e2b1"",
+                    ""id"": ""256cac48-acd2-4d64-a899-9e7764db3d9a"",
+                    ""path"": ""<Keyboard>/2"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolChangeNumbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""c7633271-fba0-4823-920c-45e517c63faf"",
+                    ""path"": ""<Keyboard>/3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolChangeNumbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""39c8860e-4a28-401f-a960-1b38479c0988"",
+                    ""path"": ""<Keyboard>/numpad1"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolChangeNumbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""d0a43522-4741-4e29-932e-f3193b33080a"",
                     ""path"": ""<Keyboard>/numpad2"",
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""ToolNext"",
+                    ""action"": ""ToolChangeNumbers"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b82ab129-ff9b-4b28-b040-b8836466ba64"",
+                    ""path"": ""<Keyboard>/numpad3"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""ToolChangeNumbers"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 }
@@ -379,11 +408,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_Gameplay_ToolChange = m_Gameplay.FindAction("ToolChange", throwIfNotFound: true);
         m_Gameplay_ToolPrev = m_Gameplay.FindAction("ToolPrev", throwIfNotFound: true);
         m_Gameplay_ToolNext = m_Gameplay.FindAction("ToolNext", throwIfNotFound: true);
+        m_Gameplay_ToolChangeNumbers = m_Gameplay.FindAction("ToolChangeNumbers", throwIfNotFound: true);
     }
 
     public void Dispose()
     {
-        Object.Destroy(asset);
+        UnityEngine.Object.Destroy(asset);
     }
 
     public InputBinding? bindingMask
@@ -434,6 +464,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_ToolChange;
     private readonly InputAction m_Gameplay_ToolPrev;
     private readonly InputAction m_Gameplay_ToolNext;
+    private readonly InputAction m_Gameplay_ToolChangeNumbers;
     public struct GameplayActions
     {
         private @PlayerControlls m_Wrapper;
@@ -444,6 +475,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @ToolChange => m_Wrapper.m_Gameplay_ToolChange;
         public InputAction @ToolPrev => m_Wrapper.m_Gameplay_ToolPrev;
         public InputAction @ToolNext => m_Wrapper.m_Gameplay_ToolNext;
+        public InputAction @ToolChangeNumbers => m_Wrapper.m_Gameplay_ToolChangeNumbers;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -471,6 +503,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @ToolNext.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
                 @ToolNext.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
                 @ToolNext.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolNext;
+                @ToolChangeNumbers.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChangeNumbers;
+                @ToolChangeNumbers.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChangeNumbers;
+                @ToolChangeNumbers.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChangeNumbers;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -493,6 +528,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @ToolNext.started += instance.OnToolNext;
                 @ToolNext.performed += instance.OnToolNext;
                 @ToolNext.canceled += instance.OnToolNext;
+                @ToolChangeNumbers.started += instance.OnToolChangeNumbers;
+                @ToolChangeNumbers.performed += instance.OnToolChangeNumbers;
+                @ToolChangeNumbers.canceled += instance.OnToolChangeNumbers;
             }
         }
     }
@@ -505,5 +543,6 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnToolChange(InputAction.CallbackContext context);
         void OnToolPrev(InputAction.CallbackContext context);
         void OnToolNext(InputAction.CallbackContext context);
+        void OnToolChangeNumbers(InputAction.CallbackContext context);
     }
 }

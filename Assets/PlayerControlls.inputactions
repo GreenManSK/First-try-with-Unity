@@ -52,6 +52,14 @@
                     "expectedControlType": "",
                     "processors": "",
                     "interactions": ""
+                },
+                {
+                    "name": "ToolChangeNumbers",
+                    "type": "Button",
+                    "id": "657fc9c9-7ce9-4008-9b9c-34291e2e2a4f",
+                    "expectedControlType": "",
+                    "processors": "",
+                    "interactions": ""
                 }
             ],
             "bindings": [
@@ -299,28 +307,6 @@
                 },
                 {
                     "name": "",
-                    "id": "e629bc02-37e5-4bfd-862c-d12fd72a96a5",
-                    "path": "<Keyboard>/1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToolPrev",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
-                    "id": "fba79517-1c59-4501-a0ca-f61beb45755f",
-                    "path": "<Keyboard>/numpad1",
-                    "interactions": "",
-                    "processors": "",
-                    "groups": "",
-                    "action": "ToolPrev",
-                    "isComposite": false,
-                    "isPartOfComposite": false
-                },
-                {
-                    "name": "",
                     "id": "d3b5428b-1e7a-465c-994b-e8ff9e6c2277",
                     "path": "<Gamepad>/rightShoulder",
                     "interactions": "",
@@ -332,23 +318,67 @@
                 },
                 {
                     "name": "",
-                    "id": "d35172c1-9da7-4ac9-914e-4dd3bb426ff8",
-                    "path": "<Keyboard>/2",
+                    "id": "0bef09e5-7223-4aed-a619-e896d86f591c",
+                    "path": "<Keyboard>/1",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToolNext",
+                    "action": "ToolChangeNumbers",
                     "isComposite": false,
                     "isPartOfComposite": false
                 },
                 {
                     "name": "",
-                    "id": "e0b49d5e-2f64-470f-b3e0-26e716d2e2b1",
+                    "id": "256cac48-acd2-4d64-a899-9e7764db3d9a",
+                    "path": "<Keyboard>/2",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToolChangeNumbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "c7633271-fba0-4823-920c-45e517c63faf",
+                    "path": "<Keyboard>/3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToolChangeNumbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "39c8860e-4a28-401f-a960-1b38479c0988",
+                    "path": "<Keyboard>/numpad1",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToolChangeNumbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "d0a43522-4741-4e29-932e-f3193b33080a",
                     "path": "<Keyboard>/numpad2",
                     "interactions": "",
                     "processors": "",
                     "groups": "",
-                    "action": "ToolNext",
+                    "action": "ToolChangeNumbers",
+                    "isComposite": false,
+                    "isPartOfComposite": false
+                },
+                {
+                    "name": "",
+                    "id": "b82ab129-ff9b-4b28-b040-b8836466ba64",
+                    "path": "<Keyboard>/numpad3",
+                    "interactions": "",
+                    "processors": "",
+                    "groups": "",
+                    "action": "ToolChangeNumbers",
                     "isComposite": false,
                     "isPartOfComposite": false
                 }

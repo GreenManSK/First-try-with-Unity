@@ -1,8 +1,10 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using DefaultNamespace;
 using Tools;
 using UnityEngine;
+using UnityEngine.InputSystem.Controls;
 
 internal enum MoveType
 {
@@ -71,15 +73,27 @@ public class PlayerController : MonoBehaviour
         _controlls.Gameplay.Swing.canceled += ctx => StopUsingTool();
 
         _controlls.Gameplay.ToolChange.performed += ctx => ChangeTool(ctx.ReadValue<float>() > 0);
+        _controlls.Gameplay.ToolChangeNumbers.performed += ctx =>
+        {
+            if (ctx.control is KeyControl)
+            {
+                ChangeTool(InputHelper.KeyToNumber(((KeyControl) ctx.control).keyCode) - 1);
+            }
+        };
         _controlls.Gameplay.ToolNext.performed += ctx => ChangeTool(true);
         _controlls.Gameplay.ToolPrev.performed += ctx => ChangeTool(false);
     }
 
     private void ChangeTool(bool next)
     {
+        ChangeTool(tools.Count + _activeToolIndex + (next ? 1 : -1));
+    }
+
+    private void ChangeTool(int index)
+    {
         if (tools.Count == 0)
             return;
-        _activeToolIndex = (_activeToolIndex + (next ? 1 : -1) + tools.Count) % tools.Count;
+        _activeToolIndex = index % tools.Count;
         activeTool = tools[_activeToolIndex];
         ToolChanged?.Invoke(_activeToolIndex);
     }
