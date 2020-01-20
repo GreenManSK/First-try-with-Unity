@@ -35,6 +35,8 @@ public class PlayerController : MonoBehaviour
     private bool _usingTool;
     private int _activeToolIndex;
 
+    private ToolController _toolInstance;
+
     // Start is called before the first frame update
     private void Start()
     {
@@ -63,8 +65,10 @@ public class PlayerController : MonoBehaviour
         _controlls.Gameplay.Move.performed += ctx => _movement = ctx.ReadValue<Vector2>();
         _controlls.Gameplay.Move.canceled += ctx => _movement = Vector2.zero;
 
-        _controlls.Gameplay.Stab.performed += ctx => UseTool(MoveType.Stab);
-        _controlls.Gameplay.Swing.performed += ctx => UseTool(MoveType.Swing);
+        _controlls.Gameplay.Stab.started += ctx => UseTool(MoveType.Stab);
+        _controlls.Gameplay.Swing.started += ctx => UseTool(MoveType.Swing);
+        _controlls.Gameplay.Stab.canceled += ctx => StopUsingTool();
+        _controlls.Gameplay.Swing.canceled += ctx => StopUsingTool();
 
         _controlls.Gameplay.ToolChange.performed += ctx => ChangeTool(ctx.ReadValue<float>() > 0);
         _controlls.Gameplay.ToolNext.performed += ctx => ChangeTool(true);
@@ -110,21 +114,29 @@ public class PlayerController : MonoBehaviour
             Quaternion.Euler(0, 0, _rotation + 180f)
         );
 
-        var tool = toolGameObject.GetComponent<ToolController>();
-        if (!tool) return;
+        _toolInstance = toolGameObject.GetComponent<ToolController>();
+        if (!_toolInstance) return;
 
         _usingTool = true;
-        tool.Destroyed += () => _usingTool = false;
+        _toolInstance.Destroyed += () => _usingTool = false;
         switch (type)
         {
             case MoveType.Swing:
-                tool.Swing();
+                _toolInstance.Swing();
                 break;
             case MoveType.Stab:
-                tool.Stab();
+                _toolInstance.Stab();
                 break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(type), type, null);
+        }
+    }
+
+    private void StopUsingTool()
+    {
+        if (_toolInstance)
+        {
+            _toolInstance.Delete();
         }
     }
 }

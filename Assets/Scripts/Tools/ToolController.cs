@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using Constants;
 using RotaryHeart.Lib.SerializableDictionary;
 using UnityEngine;
@@ -25,6 +26,8 @@ namespace Tools
 
         private Animator _animator;
         private AttackType _attackType;
+        private bool _shouldDelete;
+        private HashSet<MineableController> _damaged = new HashSet<MineableController>();
 
         public void Stab()
         {
@@ -42,7 +45,16 @@ namespace Tools
 
         public void OnFinish()
         {
-            Destroy(gameObject);
+            if (_shouldDelete)
+            {
+                Destroy(gameObject);
+            }
+            _damaged.Clear();
+        }
+
+        public void Delete()
+        {
+            _shouldDelete = true;
         }
 
         public float GetPower()
@@ -52,9 +64,24 @@ namespace Tools
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            TryTriggerCollision(other);
+        }
+
+        private void OnTriggerStay2D(Collider2D other)
+        {
+            TryTriggerCollision(other);
+        }
+
+        private void TryTriggerCollision(Collider2D other)
+        {
             if (other.CompareTag(Layers.Destroyable))
             {
-                other.GetComponent<MineableController>()?.Damage(this);
+                var obj = other.GetComponent<MineableController>();
+                if (obj != null && !_damaged.Contains(obj))
+                {
+                    _damaged.Add(obj);
+                    obj.Damage(this);
+                }
             }
         }
 
