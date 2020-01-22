@@ -21,6 +21,7 @@ public class MineableController : MonoBehaviour
     public GameObject miningEffect;
 
     public AudioClip damageSound;
+    public AudioClip destroySound;
     
     private Animator _animator;
     private AudioSource _audioSource;
@@ -45,12 +46,16 @@ public class MineableController : MonoBehaviour
     {
         _durability -= tool.GetPower() * effectivity[tool.type];
         _animator.SetFloat(AnimationTime, 1 - _durability / maxDurability);
-        EmitParticles();
-        _audioSource.PlayOneShot(damageSound);
         if (_durability <= 0)
         {
+            _audioSource.PlayOneShot(destroySound);
             GetComponent<Renderer>().enabled = false;
-            Destroy(gameObject, damageSound.length);
+            Destroy(gameObject, destroySound.length);
+        }
+        else
+        {
+            _audioSource.PlayOneShot(damageSound);
+            EmitParticles();
         }
     }
 
