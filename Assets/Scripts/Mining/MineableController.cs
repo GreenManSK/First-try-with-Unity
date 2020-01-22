@@ -3,6 +3,7 @@ using RotaryHeart.Lib.SerializableDictionary;
 using Tools;
 using UnityEngine;
 
+[RequireComponent(typeof(AudioSource))]
 public class MineableController : MonoBehaviour
 {
     private static readonly int AnimationTime = Animator.StringToHash("Time");
@@ -19,7 +20,10 @@ public class MineableController : MonoBehaviour
     public GameObject damageAnimation;
     public GameObject miningEffect;
 
+    public AudioClip damageSound;
+    
     private Animator _animator;
+    private AudioSource _audioSource;
     private float _durability;
     private ParticleSystem _miningParticles;
 
@@ -34,6 +38,7 @@ public class MineableController : MonoBehaviour
         effect.transform.parent = transform;
         _animator = effect.GetComponent<Animator>();
         _animator.speed = 0f;
+        _audioSource = GetComponent<AudioSource>();
     }
 
     public void Damage(ToolController tool)
@@ -41,9 +46,11 @@ public class MineableController : MonoBehaviour
         _durability -= tool.GetPower() * effectivity[tool.type];
         _animator.SetFloat(AnimationTime, 1 - _durability / maxDurability);
         EmitParticles();
+        _audioSource.PlayOneShot(damageSound);
         if (_durability <= 0)
         {
-            Destroy(gameObject);
+            GetComponent<Renderer>().enabled = false;
+            Destroy(gameObject, damageSound.length);
         }
     }
 
