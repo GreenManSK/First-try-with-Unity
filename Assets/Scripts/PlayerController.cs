@@ -72,7 +72,7 @@ public class PlayerController : MonoBehaviour
         _controlls.Gameplay.Stab.canceled += ctx => StopUsingTool();
         _controlls.Gameplay.Swing.canceled += ctx => StopUsingTool();
 
-        _controlls.Gameplay.ToolChange.performed += ctx => ChangeTool(ctx.ReadValue<float>() > 0);
+        _controlls.Gameplay.ToolChange.performed += ctx => ChangeTool(ctx.ReadValue<float>() < 0);
         _controlls.Gameplay.ToolChangeNumbers.performed += ctx =>
         {
             if (ctx.control is KeyControl)
