@@ -11,6 +11,9 @@ namespace Editor
         {
             base.OnInspectorGUI();
 
+            if (Application.isPlaying)
+                return;
+
             SnapToGrid actor = target as SnapToGrid;
             
             if (actor == null)
