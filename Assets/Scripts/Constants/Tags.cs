@@ -1,10 +1,11 @@
 namespace Constants
 {
-    public class Layers
+    public class Tags
     {
         public const string Destroyable = "Destroyable";
+        public const string Player = "Player";
 
-        private Layers()
+        private Tags()
         {
             
         }

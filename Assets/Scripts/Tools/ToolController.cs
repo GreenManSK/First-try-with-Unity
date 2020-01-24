@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using Constants;
+using Mining;
 using RotaryHeart.Lib.SerializableDictionary;
 using UnityEngine;
 
@@ -74,7 +75,7 @@ namespace Tools
 
         private void TryTriggerCollision(Collider2D other)
         {
-            if (other.CompareTag(Layers.Destroyable))
+            if (other.CompareTag(Tags.Destroyable))
             {
                 var obj = other.GetComponent<MineableController>();
                 if (obj != null && !_damaged.Contains(obj))
