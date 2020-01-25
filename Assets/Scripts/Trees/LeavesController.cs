@@ -1,4 +1,5 @@
-﻿using Constants;
+﻿using System.Collections.Generic;
+using Constants;
 using UnityEngine;
 
 namespace Trees
@@ -7,7 +8,7 @@ namespace Trees
     {
         public float transparency = 0.5f;
 
-        private Material[] _materials;
+        private List<Material> _materials;
 
         private void OnTriggerEnter2D(Collider2D other)
         {
@@ -39,10 +40,12 @@ namespace Trees
         private void GetMaterials()
         {
             var renderers = GetComponentsInChildren<Renderer>();
-            _materials = new Material[renderers.Length];
-            for (var i = 0; i < renderers.Length; i++)
+            _materials = new List<Material>();
+
+            foreach (var r in renderers)
             {
-                _materials[i] = renderers[i].material;
+                if (r.material.HasProperty("_Color"))
+                    _materials.Add(r.material);
             }
         }
     }

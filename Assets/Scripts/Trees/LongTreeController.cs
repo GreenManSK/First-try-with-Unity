@@ -12,8 +12,10 @@ public class LongTreeController : MonoBehaviour
     public GameObject Middle;
     public GameObject Bottom;
     public GameObject Stump;
+    public GameObject LeavesParticles;
 
     private List<GameObject> _leaves = new List<GameObject>();
+    private List<ParticleSystem> _leavesParticles = new List<ParticleSystem>();
     private BoxCollider2D _leavesCollider;
 
     private void Start()
@@ -21,7 +23,9 @@ public class LongTreeController : MonoBehaviour
         Stump.SetActive(false);
         Bottom.SetActive(true);
 
-        Bottom.GetComponent<MineableController>().Destroyed += ShowStump;
+        var mineableBottom = Bottom.GetComponent<MineableController>();
+        mineableBottom.Destroyed += ShowStump;
+        mineableBottom.Damaged += DamageLeaves;
 
         GenerateLeaves();
         CreateLeavesCollider();
@@ -29,15 +33,26 @@ public class LongTreeController : MonoBehaviour
 
     private void GenerateLeaves()
     {
-        var top = Instantiate(Top, transform.position + new Vector3(0, size, 0), Quaternion.identity);
-        top.transform.parent = transform;
-        _leaves.Add(top);
+        CreateLeaf(Top, transform.position + new Vector3(0, size, 0));
         for (var i = 1; i < size; i++)
         {
-            var middle = Instantiate(Middle, transform.position + new Vector3(0, i, 0), Quaternion.identity);
-            middle.transform.parent = transform;
-            _leaves.Add(middle);
+            CreateLeaf(Middle, transform.position + new Vector3(0, i, 0));
         }
+    }
+
+    private void CreateLeaf(GameObject prefab, Vector3 position)
+    {
+        var leaf = Instantiate(prefab, position, Quaternion.identity);
+        leaf.transform.parent = transform;
+        _leaves.Add(leaf);
+
+        var effect = Instantiate(
+            LeavesParticles,
+            position,
+            LeavesParticles.transform.rotation
+        );
+        effect.transform.parent = transform;
+        _leavesParticles.Add(effect.GetComponent<ParticleSystem>());
     }
 
     private void CreateLeavesCollider()
@@ -49,15 +64,24 @@ public class LongTreeController : MonoBehaviour
         _leavesCollider.offset = new Vector2(0, GetColliderOffset());
     }
 
-    private float GetColliderOffset()
+    private void DamageLeaves(float durabilityPercentage)
     {
-        return size / 2 + (size % 2 == 0 ? 0.5f : 1f);
+        _leavesParticles.ForEach(p =>
+        {
+            p.Clear();
+            p.Play();
+        });
     }
 
     private void ShowStump()
     {
         _leaves.ForEach(Destroy);
         Stump.SetActive(true);
+    }
+
+    private float GetColliderOffset()
+    {
+        return size / 2 + (size % 2 == 0 ? 0.5f : 1f);
     }
 
     private void OnDrawGizmos()

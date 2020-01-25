@@ -17,6 +17,12 @@ namespace Mining
             {ToolType.Sword, 1f}
         };
 
+        public delegate void DestroyDelegate();
+        public event DestroyDelegate Destroyed;
+
+        public delegate void DamageDelegate(float durabilityPercentage);
+        public event DamageDelegate Damaged;
+
         public float maxDurability = 10.0f;
 
         public GameObject damageAnimation;
@@ -25,9 +31,6 @@ namespace Mining
         public AudioClip damageSound;
         public AudioClip destroySound;
 
-        public delegate void DestroyDelegate();
-        public event DestroyDelegate Destroyed;
-    
         private Animator _animator;
         private AudioSource _audioSource;
         private float _durability;
@@ -54,8 +57,11 @@ namespace Mining
         public void Damage(ToolController tool)
         {
             _durability -= tool.GetPower() * effectivity[tool.type];
+            Damaged?.Invoke(_durability / maxDurability);
+
             if (_animator != null)
                 _animator.SetFloat(AnimationTime, 1 - _durability / maxDurability - 0.001f);
+
             if (_durability <= 0)
             {
                 _audioSource.PlayOneShot(destroySound);
@@ -82,7 +88,7 @@ namespace Mining
                 var effect = Instantiate(
                     miningEffect,
                     transform.position,
-                    Quaternion.identity
+                    miningEffect.transform.rotation
                 );
                 effect.transform.parent = transform;
                 _miningParticles = effect.GetComponent<ParticleSystem>();
