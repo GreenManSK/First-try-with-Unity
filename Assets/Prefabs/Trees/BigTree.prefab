@@ -62,6 +62,8 @@ MonoBehaviour:
   StumpR: {fileID: 6168423822430135425, guid: 95188b1177af4cb4687a99849786adcf, type: 3}
   StumpM: {fileID: 8445975124724278536, guid: 27109b1c416f096409575cefb647543d, type: 3}
   StumpL: {fileID: 7042377852191636642}
+  LeavesParticles: {fileID: 3391491286531878350, guid: 6e97c06e09bd06e47a473a7c94047d10,
+    type: 3}
 --- !u!114 &6549947496599970545
 MonoBehaviour:
   m_ObjectHideFlags: 0

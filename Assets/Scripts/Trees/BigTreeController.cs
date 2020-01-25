@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using Constants;
+using Mining;
 using UnityEngine;
 
 public class BigTreeController : MonoBehaviour
@@ -21,10 +22,13 @@ public class BigTreeController : MonoBehaviour
     public GameObject StumpM;
     public GameObject StumpL;
 
+    public GameObject LeavesParticles;
+
     private GameObject[,] _leavesBlocks;
-    private List<GameObject> _bottomBlocks = new List<GameObject>();
-    private List<GameObject> _stumpBlocks = new List<GameObject>();
+    private readonly List<GameObject> _bottomBlocks = new List<GameObject>();
+    private readonly List<GameObject> _stumpBlocks = new List<GameObject>();
     private BoxCollider2D _leavesCollider;
+    private List<ParticleSystem> _leavesParticles = new List<ParticleSystem>();
 
     private void Start()
     {
@@ -61,19 +65,20 @@ public class BigTreeController : MonoBehaviour
     private void GenerateLeavesLayer(int row, GameObject left, GameObject middle, GameObject right)
     {
         var transformHeight = height + 1 - row;
-        _leavesBlocks[row, 0] = CreateBlock(left, transform.position + new Vector3(0, transformHeight, 0));
+        _leavesBlocks[row, 0] = CreateLeafBlock(left, transform.position + new Vector3(0, transformHeight, 0));
         for (var i = 1; i <= widht; i++)
         {
-            _leavesBlocks[row, i] = CreateBlock(middle, transform.position + new Vector3(i, transformHeight, 0));
+            _leavesBlocks[row, i] = CreateLeafBlock(middle, transform.position + new Vector3(i, transformHeight, 0));
         }
 
         _leavesBlocks[row, widht + 1] =
-            CreateBlock(right, transform.position + new Vector3(widht + 1, transformHeight, 0));
+            CreateLeafBlock(right, transform.position + new Vector3(widht + 1, transformHeight, 0));
     }
 
     private void GenerateBottom()
     {
         _bottomBlocks.Add(BottomL);
+        var effectivity = BottomL.GetComponent<MineableController>().effectivity;
         for (var i = 1; i <= widht; i++)
         {
             var block = CreateBlock(BottomM, transform.position + new Vector3(i, 0, 0));
@@ -82,8 +87,24 @@ public class BigTreeController : MonoBehaviour
 
         var right = CreateBlock(BottomR, transform.position + new Vector3(widht + 1, 0, 0));
         _bottomBlocks.Add(right);
+        _bottomBlocks.ForEach(b =>
+        {
+            var mineable = b.GetComponent<MineableController>();
+            mineable.effectivity = effectivity;
+            mineable.Damaged += DropLeaves;
+//            mineable.Destroyed += null;
+        });
     }
 
+    private void DropLeaves(float damage)
+    {
+        _leavesParticles.ForEach(p =>
+        {
+            p.Clear();
+            p.Play();
+        });
+    }
+    
     private void GenerateStump()
     {
         _stumpBlocks.Add(StumpL);
@@ -98,11 +119,26 @@ public class BigTreeController : MonoBehaviour
         _stumpBlocks.ForEach(s => s.SetActive(false));
     }
 
+    private GameObject CreateLeafBlock(GameObject prefab, Vector3 position)
+    {
+        var leaf = CreateBlock(prefab, position);
+
+        var effect = Instantiate(
+            LeavesParticles,
+            position,
+            LeavesParticles.transform.rotation
+        );
+        leaf.transform.parent = transform;
+        _leavesParticles.Add(effect.GetComponent<ParticleSystem>());
+
+        return leaf;
+    }
+
     private GameObject CreateBlock(GameObject prefab, Vector3 position)
     {
-        var leaf = Instantiate(prefab, position, Quaternion.identity);
-        leaf.transform.parent = transform;
-        return leaf;
+        var block = Instantiate(prefab, position, Quaternion.identity);
+        block.transform.parent = transform;
+        return block;
     }
 
     private Vector2 GetColliderPosition()
@@ -112,16 +148,17 @@ public class BigTreeController : MonoBehaviour
             (height + 1) / 2 + ((height + 1) % 2 == 0 ? 0.5f : 1f)
         );
     }
+
     private void OnDrawGizmos()
     {
         var transparency = .4f;
         var margins = .2f;
         Gizmos.color = Colors.Turquoise - new Color(0, 0, 0, 1 - transparency);
         Gizmos.DrawCube(
-            transform.position + (Vector3) GetColliderPosition() + new Vector3(0, - margins / 2, 0),
+            transform.position + (Vector3) GetColliderPosition() + new Vector3(0, -margins / 2, 0),
             new Vector3(widht + 2 - margins, height + 1 - margins, 0)
         );
-        
+
         Gizmos.color = Colors.Orange - new Color(0, 0, 0, 1 - transparency);
         Gizmos.DrawCube(
             transform.position + new Vector3((widht + 1 - margins) / 2 + .5f, margins / 2, 0),
