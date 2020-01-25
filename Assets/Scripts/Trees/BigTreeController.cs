@@ -1,5 +1,6 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using Constants;
 using UnityEngine;
 
 public class BigTreeController : MonoBehaviour
@@ -28,7 +29,7 @@ public class BigTreeController : MonoBehaviour
     private void Start()
     {
         Generate();
-        // Create 2D Collider 
+        CreateLeavesCollider();
     }
 
     private void Generate()
@@ -36,7 +37,6 @@ public class BigTreeController : MonoBehaviour
         GenerateBottom();
         GenerateStump();
         GenerateLeaves();
-        CreateLeavesCollider();
     }
 
     private void CreateLeavesCollider()
@@ -45,10 +45,7 @@ public class BigTreeController : MonoBehaviour
         if (_leavesCollider == null)
             return;
         _leavesCollider.size = new Vector2(widht + 2, height + 1);
-        _leavesCollider.offset = new Vector2(
-            widht / 2 + ((widht + 2) % 2 == 0 ? 0.5f : 1f),
-            (height + 1) / 2 + ((height + 1) % 2 == 0 ? 0.5f : 1f)
-        );
+        _leavesCollider.offset = GetColliderPosition();
     }
 
     private void GenerateLeaves()
@@ -106,5 +103,29 @@ public class BigTreeController : MonoBehaviour
         var leaf = Instantiate(prefab, position, Quaternion.identity);
         leaf.transform.parent = transform;
         return leaf;
+    }
+
+    private Vector2 GetColliderPosition()
+    {
+        return new Vector2(
+            widht / 2 + ((widht + 2) % 2 == 0 ? 0.5f : 1f),
+            (height + 1) / 2 + ((height + 1) % 2 == 0 ? 0.5f : 1f)
+        );
+    }
+    private void OnDrawGizmos()
+    {
+        var transparency = .4f;
+        var margins = .2f;
+        Gizmos.color = Colors.Turquoise - new Color(0, 0, 0, 1 - transparency);
+        Gizmos.DrawCube(
+            transform.position + (Vector3) GetColliderPosition() + new Vector3(0, - margins / 2, 0),
+            new Vector3(widht + 2 - margins, height + 1 - margins, 0)
+        );
+        
+        Gizmos.color = Colors.Orange - new Color(0, 0, 0, 1 - transparency);
+        Gizmos.DrawCube(
+            transform.position + new Vector3((widht + 1 - margins) / 2 + .5f, margins / 2, 0),
+            new Vector3(widht + 1 - margins, 1 - margins, 0)
+        );
     }
 }
