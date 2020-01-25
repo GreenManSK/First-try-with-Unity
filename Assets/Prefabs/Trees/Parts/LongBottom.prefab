@@ -69,7 +69,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 7748518322702929914, guid: 9d60d99fd056a1f4ca74bee34d267831,
+  m_Sprite: {fileID: 5352528730758141365, guid: d596c4453459612469e492075646599b,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -94,6 +94,7 @@ GameObject:
   - component: {fileID: 4453481048185485925}
   - component: {fileID: 4453481048185485926}
   - component: {fileID: 4453481048185485924}
+  - component: {fileID: 1788129745648625012}
   m_Layer: 0
   m_Name: LongBottom
   m_TagString: Destroyable
@@ -270,8 +271,7 @@ MonoBehaviour:
     - 1
     - 1
   maxDurability: 10
-  damageAnimation: {fileID: 3176009523828583433, guid: 19aeefce8fed0d74bb521960505ff31f,
-    type: 3}
+  damageAnimation: {fileID: 0}
   miningEffect: {fileID: 3391491286531878350, guid: 6e97c06e09bd06e47a473a7c94047d10,
     type: 3}
   damageSound: {fileID: 8300000, guid: 95c5121390d728f4bb5085c4cfde8bcd, type: 3}
@@ -302,3 +302,22 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.45351696, y: 0.38145304}
   m_EdgeRadius: 0
+--- !u!95 &1788129745648625012
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4453481048185485921}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: a69ce8febc225be43a72bd80a9ec3f61, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0

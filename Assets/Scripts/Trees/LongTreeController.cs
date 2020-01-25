@@ -6,6 +6,8 @@ using UnityEngine;
 
 public class LongTreeController : MonoBehaviour
 {
+    private static readonly int AnimationTime = Animator.StringToHash("Time");
+
     public int size = 1;
 
     public GameObject Top;
@@ -16,6 +18,7 @@ public class LongTreeController : MonoBehaviour
 
     private List<GameObject> _leaves = new List<GameObject>();
     private List<ParticleSystem> _leavesParticles = new List<ParticleSystem>();
+    private Animator[] _animators;
     private BoxCollider2D _leavesCollider;
 
     private void Start()
@@ -29,6 +32,16 @@ public class LongTreeController : MonoBehaviour
 
         GenerateLeaves();
         CreateLeavesCollider();
+        PrepareAnimators();
+    }
+
+    private void PrepareAnimators()
+    {
+        _animators = GetComponentsInChildren<Animator>();
+        foreach (var animator in _animators)
+        {
+            animator.speed = 0f;
+        }
     }
 
     private void GenerateLeaves()
@@ -71,6 +84,10 @@ public class LongTreeController : MonoBehaviour
             p.Clear();
             p.Play();
         });
+        foreach (var animator in _animators)
+        {
+            animator.SetFloat(AnimationTime, 1 - durabilityPercentage);
+        }
     }
 
     private void ShowStump()
