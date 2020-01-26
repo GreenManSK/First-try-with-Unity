@@ -203,6 +203,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: LongBottom
       objectReference: {fileID: 0}
+    - target: {fileID: 4453481048185485926, guid: a2d7cc0693aef794a96b15282f9cb0fc,
+        type: 3}
+      propertyPath: effectivity._values.Array.data[1]
+      value: 0.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4453481048185485926, guid: a2d7cc0693aef794a96b15282f9cb0fc,
+        type: 3}
+      propertyPath: effectivity._values.Array.data[2]
+      value: 0.3
+      objectReference: {fileID: 0}
     - target: {fileID: 4453481048185485927, guid: a2d7cc0693aef794a96b15282f9cb0fc,
         type: 3}
       propertyPath: m_LocalPosition.x
