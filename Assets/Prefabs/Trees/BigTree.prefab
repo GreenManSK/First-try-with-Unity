@@ -177,6 +177,8 @@ MonoBehaviour:
   miningEffect: {fileID: 0}
   damageSound: {fileID: 8300000, guid: 95c5121390d728f4bb5085c4cfde8bcd, type: 3}
   destroySound: {fileID: 8300000, guid: f3377e2e326e784478bf71836c4d1a15, type: 3}
+  drop: {fileID: 0}
+  dropQuantity: 0
 --- !u!50 &4033864346339160737
 Rigidbody2D:
   serializedVersion: 4
@@ -299,6 +301,8 @@ MonoBehaviour:
   mineable: {fileID: 2534037582102219413}
   LeavesParticles: {fileID: 3391491286531878350, guid: 6e97c06e09bd06e47a473a7c94047d10,
     type: 3}
+  drop: {fileID: 4513261963744297674, guid: c0b343c8ff55faf4f9ae4ba814371a83, type: 3}
+  dropQuantity: 2
 --- !u!114 &6549947496599970545
 MonoBehaviour:
   m_ObjectHideFlags: 0

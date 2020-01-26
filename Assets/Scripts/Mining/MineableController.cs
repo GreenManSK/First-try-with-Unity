@@ -18,9 +18,11 @@ namespace Mining
         };
 
         public delegate void DestroyDelegate();
+
         public event DestroyDelegate Destroyed;
 
         public delegate void DamageDelegate(float durabilityPercentage);
+
         public event DamageDelegate Damaged;
 
         public float maxDurability = 10.0f;
@@ -30,6 +32,9 @@ namespace Mining
 
         public AudioClip damageSound;
         public AudioClip destroySound;
+
+        public GameObject drop;
+        public int dropQuantity = 1;
 
         private Animator _animator;
         private AudioSource _audioSource;
@@ -65,6 +70,7 @@ namespace Mining
             if (_durability <= 0)
             {
                 _audioSource.PlayOneShot(destroySound);
+                SpawnDrop();
                 Destroy(gameObject, destroySound.length);
             }
             else
@@ -74,18 +80,28 @@ namespace Mining
             }
         }
 
+        private void SpawnDrop()
+        {
+            if (!drop) return;
+            var item = Instantiate(drop, transform.position, Quaternion.identity);
+            item.GetComponent<DropItemController>().qunatity = dropQuantity;
+        }
+
         public void SetMaxDurability(float newMaxDurability, bool adjustActualDurability)
         {
             if (adjustActualDurability)
             {
                 _durability *= newMaxDurability / maxDurability;
             }
+
             maxDurability = newMaxDurability;
         }
 
         private void OnDestroy()
         {
-            Destroyed?.Invoke();
+            // We don't need to trigger Destroyed when the object is destroyed by Unity
+            if (_durability <= 0)
+                Destroyed?.Invoke();
         }
 
         private void EmitParticles()

@@ -16,6 +16,9 @@ public class LongTreeController : MonoBehaviour
     public GameObject Stump;
     public GameObject LeavesParticles;
 
+    public GameObject drop;
+    public int dropQuantity = 1;
+    
     private List<GameObject> _leaves = new List<GameObject>();
     private List<ParticleSystem> _leavesParticles = new List<ParticleSystem>();
     private Animator[] _animators;
@@ -27,7 +30,7 @@ public class LongTreeController : MonoBehaviour
         Bottom.SetActive(true);
 
         var mineableBottom = Bottom.GetComponent<MineableController>();
-        mineableBottom.Destroyed += ShowStump;
+        mineableBottom.Destroyed += DestroyTree;
         mineableBottom.Damaged += DamageLeaves;
 
         GenerateLeaves();
@@ -90,9 +93,19 @@ public class LongTreeController : MonoBehaviour
         }
     }
 
+    private void DestroyTree()
+    {
+        _leaves.ForEach(l =>
+        {
+            var item = Instantiate(drop, l.transform.position, Quaternion.identity);
+            item.GetComponent<DropItemController>().qunatity = dropQuantity;
+            Destroy(l);
+        });
+        ShowStump();
+    }
+    
     private void ShowStump()
     {
-        _leaves.ForEach(Destroy);
         Stump.SetActive(true);
     }
 

@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Constants;
 using Mining;
 using UnityEngine;
@@ -28,6 +27,9 @@ public class BigTreeController : MonoBehaviour
 
     public GameObject LeavesParticles;
 
+    public GameObject drop;
+    public int dropQuantity = 1;
+    
     private GameObject[,] _leavesBlocks; // height, width
     private readonly List<GameObject> _stumpBlocks = new List<GameObject>();
     private BoxCollider2D _leavesCollider;
@@ -108,6 +110,8 @@ public class BigTreeController : MonoBehaviour
         _stumpBlocks.ForEach(s => s.SetActive(true));
         foreach (var leave in _leavesBlocks)
         {
+            var item = Instantiate(drop, leave.transform.position, Quaternion.identity);
+            item.GetComponent<DropItemController>().qunatity = dropQuantity;
             Destroy(leave);
         }
     }

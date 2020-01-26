@@ -165,6 +165,8 @@ MonoBehaviour:
     type: 3}
   damageSound: {fileID: 8300000, guid: 0b6c9c514023e524594a171a8f4bca92, type: 3}
   destroySound: {fileID: 8300000, guid: 4cd9bacaab545b7468257b1c60624c02, type: 3}
+  drop: {fileID: 183372626332971913, guid: 340a4273fa5c05541b0160ba76c059b3, type: 3}
+  dropQuantity: 1
 --- !u!82 &8099677855284484354
 AudioSource:
   m_ObjectHideFlags: 0
