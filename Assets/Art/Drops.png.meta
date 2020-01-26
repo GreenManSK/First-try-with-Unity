@@ -11,6 +11,12 @@ TextureImporter:
   - first:
       213: -2040057753640575754
     second: Drops_2
+  - first:
+      213: 5622005364771165601
+    second: Drops_3
+  - first:
+      213: 2932976599428820663
+    second: Drops_4
   externalObjects: {}
   serializedVersion: 10
   mipmaps:
@@ -114,14 +120,14 @@ TextureImporter:
         y: 32
         width: 16
         height: 16
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: 1190d0abdc00e0548a041469da7b008d
+      spriteID: f905fbe5228662549bdd676181ab7ae2
       internalID: 4564899823668317575
       vertices: []
       indices: 
@@ -135,14 +141,14 @@ TextureImporter:
         y: 32
         width: 16
         height: 16
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: bdd7e089ea0a3af49978a650ca553853
+      spriteID: e993919995a28fb4c81108bdbae927fb
       internalID: 6749907094918187561
       vertices: []
       indices: 
@@ -156,15 +162,57 @@ TextureImporter:
         y: 32
         width: 16
         height: 16
-      alignment: 2
-      pivot: {x: 0.5, y: 1}
+      alignment: 0
+      pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
       outline: []
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: f30ddfbaec05a284688e1f5033a0950d
+      spriteID: 45a0af192f746834d848a126016c2782
       internalID: -2040057753640575754
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drops_3
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a07dbe7c0462474eaca5dc634ad1067
+      internalID: 5622005364771165601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Drops_4
+      rect:
+        serializedVersion: 2
+        x: 16
+        y: 16
+        width: 16
+        height: 16
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 994ab69e9f2923843bad67c3048470e1
+      internalID: 2932976599428820663
       vertices: []
       indices: 
       edges: []

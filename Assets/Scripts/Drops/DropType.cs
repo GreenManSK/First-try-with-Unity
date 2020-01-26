@@ -5,6 +5,7 @@ using UnityEngine;
 public enum DropType
 {
     Rock,
+    Gold,
     Wood,
     Unknown
 }
