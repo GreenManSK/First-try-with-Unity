@@ -74,6 +74,15 @@ namespace Mining
             }
         }
 
+        public void SetMaxDurability(float newMaxDurability, bool adjustActualDurability)
+        {
+            if (adjustActualDurability)
+            {
+                _durability *= newMaxDurability / maxDurability;
+            }
+            maxDurability = newMaxDurability;
+        }
+
         private void OnDestroy()
         {
             Destroyed?.Invoke();

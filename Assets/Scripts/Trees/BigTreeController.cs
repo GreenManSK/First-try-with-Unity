@@ -6,8 +6,10 @@ using UnityEngine;
 
 public class BigTreeController : MonoBehaviour
 {
-    public int widht = 0;
-    public int height = 0;
+    private static readonly int AnimationTime = Animator.StringToHash("Time");
+
+    public int widht;
+    public int height;
 
     public GameObject TopR;
     public GameObject TopM;
@@ -22,18 +24,29 @@ public class BigTreeController : MonoBehaviour
     public GameObject StumpM;
     public GameObject StumpL;
 
+    public GameObject mineable;
+
     public GameObject LeavesParticles;
 
-    private GameObject[,] _leavesBlocks;
-    private readonly List<GameObject> _bottomBlocks = new List<GameObject>();
+    private GameObject[,] _leavesBlocks; // height, width
     private readonly List<GameObject> _stumpBlocks = new List<GameObject>();
     private BoxCollider2D _leavesCollider;
-    private List<ParticleSystem> _leavesParticles = new List<ParticleSystem>();
+    private readonly List<ParticleSystem> _leavesParticles = new List<ParticleSystem>();
+    private readonly List<Animator> _animators = new List<Animator>();
 
     private void Start()
     {
         Generate();
+        PrepareMineable();
         CreateLeavesCollider();
+    }
+
+    private void PrepareMineable()
+    {
+        var mineableController = mineable.GetComponent<MineableController>();
+        mineableController.SetMaxDurability(mineableController.maxDurability * (widht + 1), true);
+        mineableController.Damaged += DropLeaves;
+        mineableController.Destroyed += Destroyed;
     }
 
     private void Generate()
@@ -77,34 +90,38 @@ public class BigTreeController : MonoBehaviour
 
     private void GenerateBottom()
     {
-        _bottomBlocks.Add(BottomL);
-        var effectivity = BottomL.GetComponent<MineableController>().effectivity;
+        AddLeavesParticles(BottomL);
+        _animators.Add(BottomL.GetComponent<Animator>());
+
         for (var i = 1; i <= widht; i++)
         {
-            var block = CreateBlock(BottomM, transform.position + new Vector3(i, 0, 0));
-            _bottomBlocks.Add(block);
+            var block = CreateLeafBlock(BottomM, transform.position + new Vector3(i, 0, 0));
+            block.transform.parent = mineable.transform;
         }
 
-        var right = CreateBlock(BottomR, transform.position + new Vector3(widht + 1, 0, 0));
-        _bottomBlocks.Add(right);
-        _bottomBlocks.ForEach(b =>
+        var right = CreateLeafBlock(BottomR, transform.position + new Vector3(widht + 1, 0, 0));
+        right.transform.parent = mineable.transform;
+    }
+
+    private void Destroyed()
+    {
+        _stumpBlocks.ForEach(s => s.SetActive(true));
+        foreach (var leave in _leavesBlocks)
         {
-            var mineable = b.GetComponent<MineableController>();
-            mineable.effectivity = effectivity;
-            mineable.Damaged += DropLeaves;
-//            mineable.Destroyed += null;
-        });
+            Destroy(leave);
+        }
     }
 
     private void DropLeaves(float damage)
     {
+        _animators.ForEach(a => a.SetFloat(AnimationTime, 1 - damage));
         _leavesParticles.ForEach(p =>
         {
             p.Clear();
             p.Play();
         });
     }
-    
+
     private void GenerateStump()
     {
         _stumpBlocks.Add(StumpL);
@@ -122,22 +139,28 @@ public class BigTreeController : MonoBehaviour
     private GameObject CreateLeafBlock(GameObject prefab, Vector3 position)
     {
         var leaf = CreateBlock(prefab, position);
+        AddLeavesParticles(leaf);
+        return leaf;
+    }
 
+    private void AddLeavesParticles(GameObject block)
+    {
         var effect = Instantiate(
             LeavesParticles,
-            position,
+            block.transform.position,
             LeavesParticles.transform.rotation
         );
-        leaf.transform.parent = transform;
+        effect.transform.parent = transform;
         _leavesParticles.Add(effect.GetComponent<ParticleSystem>());
-
-        return leaf;
     }
 
     private GameObject CreateBlock(GameObject prefab, Vector3 position)
     {
         var block = Instantiate(prefab, position, Quaternion.identity);
         block.transform.parent = transform;
+        var animator = block.GetComponent<Animator>();
+        if (animator != null)
+            _animators.Add(animator);
         return block;
     }
 

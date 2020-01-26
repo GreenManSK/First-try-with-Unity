@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 1325436283385198879}
   - component: {fileID: 3172377498127191369}
   - component: {fileID: 642912917991888563}
-  - component: {fileID: 513081569567405155}
+  - component: {fileID: 2475296946061122843}
   m_Layer: 0
   m_Name: BigBM
   m_TagString: Destroyable
@@ -46,7 +46,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0, y: -0.20678186}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -156,53 +156,25 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &513081569567405155
-MonoBehaviour:
+--- !u!95 &2475296946061122843
+Animator:
+  serializedVersion: 3
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 648323820395000525}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c9335d1e4f19144a5a0753c7d2eca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectivity:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
-      isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: 010000000200000000000000
-    _keys: 010000000200000000000000
-    _values:
-    - 1
-    - 1
-    - 1
-  maxDurability: 10
-  damageAnimation: {fileID: 0}
-  miningEffect: {fileID: 3391491286531878350, guid: 6e97c06e09bd06e47a473a7c94047d10,
-    type: 3}
-  damageSound: {fileID: 8300000, guid: 95c5121390d728f4bb5085c4cfde8bcd, type: 3}
-  destroySound: {fileID: 8300000, guid: f3377e2e326e784478bf71836c4d1a15, type: 3}
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 8465f0565cb8d204c9114ca19553d192, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &676611514354451053
 GameObject:
   m_ObjectHideFlags: 0
@@ -272,7 +244,7 @@ SpriteRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 0
-  m_Sprite: {fileID: 5056307353415951033, guid: 9d60d99fd056a1f4ca74bee34d267831,
+  m_Sprite: {fileID: -3820889241034323803, guid: b84da9f1c383d554ebaa3667b4fc1012,
     type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0

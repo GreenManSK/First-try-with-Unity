@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4337924139009743371}
   - component: {fileID: 8149123188489164813}
-  - component: {fileID: 3603932016129526506}
   - component: {fileID: 8733653981286395898}
+  - component: {fileID: 2474867011952404071}
   m_Layer: 0
   m_Name: BigBL
   m_TagString: Destroyable
@@ -130,53 +130,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &3603932016129526506
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 5632805218613242631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b9c9335d1e4f19144a5a0753c7d2eca6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  effectivity:
-    reorderableList:
-      canAdd: 1
-      canRemove: 1
-      draggable: 1
-      expandable: 1
-      multipleSelection: 1
-      isExpanded: 0
-      label:
-        m_Text: Keys
-        m_Image: {fileID: 0}
-        m_Tooltip: 
-      headerHeight: 18
-      footerHeight: 13
-      slideEasing: 0.15
-      verticalSpacing: 2
-      showDefaultBackground: 1
-      elementDisplayType: 0
-      elementNameProperty: 
-      elementNameOverride: 
-      elementIcon: {fileID: 0}
-    reqReferences: {fileID: 0}
-    isExpanded: 0
-    _keyValues: 010000000200000000000000
-    _keys: 010000000200000000000000
-    _values:
-    - 1
-    - 1
-    - 1
-  maxDurability: 10
-  damageAnimation: {fileID: 0}
-  miningEffect: {fileID: 3391491286531878350, guid: 6e97c06e09bd06e47a473a7c94047d10,
-    type: 3}
-  damageSound: {fileID: 8300000, guid: 95c5121390d728f4bb5085c4cfde8bcd, type: 3}
-  destroySound: {fileID: 8300000, guid: f3377e2e326e784478bf71836c4d1a15, type: 3}
 --- !u!61 &8733653981286395898
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -189,7 +142,7 @@ BoxCollider2D:
   m_Material: {fileID: 0}
   m_IsTrigger: 1
   m_UsedByEffector: 0
-  m_UsedByComposite: 0
+  m_UsedByComposite: 1
   m_Offset: {x: 0.3409703, y: -0.22658038}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
@@ -203,6 +156,25 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 0.31805938, y: 0.43244934}
   m_EdgeRadius: 0
+--- !u!95 &2474867011952404071
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 5632805218613242631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4a520e93642833346901ac067e20ed6a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &8865606608850078408
 GameObject:
   m_ObjectHideFlags: 0
