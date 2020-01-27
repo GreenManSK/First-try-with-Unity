@@ -9,4 +9,12 @@ public class GameController : MonoBehaviour
     {
         AudioListener.volume = .5f;
     }
+    
+    void OnGUI()
+    {
+        if (Application.isEditor)
+        {
+            GUI.Label(new Rect(0, 0, 100, 100), "FPS: " + (int) (1.0f / Time.smoothDeltaTime));
+        }
+    }
 }
