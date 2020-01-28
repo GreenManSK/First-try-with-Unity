@@ -51,7 +51,7 @@ namespace Mining
                     transform.position,
                     Quaternion.identity
                 );
-                effect.transform.parent = transform;
+                effect.transform.SetParent(transform, true);
                 _animator = effect.GetComponent<Animator>();
                 _animator.speed = 0f;
             }
@@ -115,7 +115,7 @@ namespace Mining
                     transform.position,
                     miningEffect.transform.rotation
                 );
-                effect.transform.parent = transform;
+                effect.transform.SetParent(transform, true);
                 _miningParticles = effect.GetComponent<ParticleSystem>();
             }
 

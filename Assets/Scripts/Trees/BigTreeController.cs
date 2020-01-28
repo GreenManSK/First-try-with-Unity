@@ -98,11 +98,11 @@ public class BigTreeController : MonoBehaviour
         for (var i = 1; i <= widht; i++)
         {
             var block = CreateLeafBlock(BottomM, transform.position + new Vector3(i, 0, 0));
-            block.transform.parent = mineable.transform;
+            block.transform.SetParent(mineable.transform, true);
         }
 
         var right = CreateLeafBlock(BottomR, transform.position + new Vector3(widht + 1, 0, 0));
-        right.transform.parent = mineable.transform;
+        right.transform.SetParent(mineable.transform, true);
     }
 
     private void Destroyed()
@@ -111,6 +111,7 @@ public class BigTreeController : MonoBehaviour
         foreach (var leave in _leavesBlocks)
         {
             var item = Instantiate(drop, leave.transform.position, Quaternion.identity);
+            item.transform.SetParent(transform, true);
             item.GetComponent<DropItemController>().quantity = dropQuantity;
             Destroy(leave);
         }
@@ -154,14 +155,14 @@ public class BigTreeController : MonoBehaviour
             block.transform.position,
             LeavesParticles.transform.rotation
         );
-        effect.transform.parent = transform;
+        effect.transform.SetParent(transform, true);
         _leavesParticles.Add(effect.GetComponent<ParticleSystem>());
     }
 
     private GameObject CreateBlock(GameObject prefab, Vector3 position)
     {
         var block = Instantiate(prefab, position, Quaternion.identity);
-        block.transform.parent = transform;
+        block.transform.SetParent(transform, true);
         var animator = block.GetComponent<Animator>();
         if (animator != null)
             _animators.Add(animator);

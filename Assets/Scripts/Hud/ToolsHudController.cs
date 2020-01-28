@@ -30,7 +30,7 @@ namespace Hud
             foreach (var tool in Player.tools)
             {
                 var window = Instantiate(ToolsHudWindowPrefab, Vector3.zero, Quaternion.identity);
-                window.transform.parent = gameObject.transform;
+                window.transform.SetParent(gameObject.transform, true);
                 window.transform.localPosition = new Vector3(WindowBaseX + count++ * WindowBaseXDelta, WindowBaseY, 0);
                 var hudWindow = window.GetComponent<ToolsHudWindowController>();
                 hudWindow.SetIcon(tool.GetComponentInChildren<SpriteRenderer>()?.sprite);

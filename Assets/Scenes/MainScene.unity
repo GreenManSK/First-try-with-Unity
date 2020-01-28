@@ -5853,7 +5853,7 @@ Tilemap:
       m_AnimatedSprites:
       - {fileID: 3844121810770124872, guid: 3980a08fe3694e749a29fd29f0b368e3, type: 3}
       - {fileID: 3843345809454230613, guid: 3980a08fe3694e749a29fd29f0b368e3, type: 3}
-      m_AnimationSpeed: 0.75
+      m_AnimationSpeed: 0.75000006
       m_AnimationTimeOffset: 0
       m_IsLooping: 1
   - first: {x: -4, y: -4, z: 0}
@@ -10030,6 +10030,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: DropRock Variant
       objectReference: {fileID: 0}
+    - target: {fileID: 499013313185870223, guid: 340a4273fa5c05541b0160ba76c059b3,
+        type: 3}
+      propertyPath: quantity
+      value: 8
+      objectReference: {fileID: 0}
     - target: {fileID: 5949059659711797300, guid: 340a4273fa5c05541b0160ba76c059b3,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -10772,6 +10777,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 840502524}
     m_Modifications:
+    - target: {fileID: 4235057448009580748, guid: c0b343c8ff55faf4f9ae4ba814371a83,
+        type: 3}
+      propertyPath: quantity
+      value: 15
+      objectReference: {fileID: 0}
     - target: {fileID: 4513261963744297674, guid: c0b343c8ff55faf4f9ae4ba814371a83,
         type: 3}
       propertyPath: m_Name
@@ -11057,6 +11067,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: DropRock
+      objectReference: {fileID: 0}
+    - target: {fileID: 499013313185870223, guid: 340a4273fa5c05541b0160ba76c059b3,
+        type: 3}
+      propertyPath: quantity
+      value: 640
       objectReference: {fileID: 0}
     - target: {fileID: 5949059659711797300, guid: 340a4273fa5c05541b0160ba76c059b3,
         type: 3}

@@ -59,7 +59,7 @@ public class LongTreeController : MonoBehaviour
     private void CreateLeaf(GameObject prefab, Vector3 position)
     {
         var leaf = Instantiate(prefab, position, Quaternion.identity);
-        leaf.transform.parent = transform;
+        leaf.transform.SetParent(transform, true);
         _leaves.Add(leaf);
 
         var effect = Instantiate(
@@ -67,7 +67,7 @@ public class LongTreeController : MonoBehaviour
             position,
             LeavesParticles.transform.rotation
         );
-        effect.transform.parent = transform;
+        effect.transform.SetParent(transform, true);
         _leavesParticles.Add(effect.GetComponent<ParticleSystem>());
     }
 
@@ -98,6 +98,7 @@ public class LongTreeController : MonoBehaviour
         _leaves.ForEach(l =>
         {
             var item = Instantiate(drop, l.transform.position, Quaternion.identity);
+            item.transform.SetParent(transform, true);
             item.GetComponent<DropItemController>().quantity = dropQuantity;
             Destroy(l);
         });
