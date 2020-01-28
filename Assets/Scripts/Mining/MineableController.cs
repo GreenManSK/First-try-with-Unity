@@ -84,7 +84,7 @@ namespace Mining
         {
             if (!drop) return;
             var item = Instantiate(drop, transform.position, Quaternion.identity);
-            item.GetComponent<DropItemController>().qunatity = dropQuantity;
+            item.GetComponent<DropItemController>().quantity = dropQuantity;
         }
 
         public void SetMaxDurability(float newMaxDurability, bool adjustActualDurability)

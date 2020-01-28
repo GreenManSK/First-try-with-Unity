@@ -111,7 +111,7 @@ public class BigTreeController : MonoBehaviour
         foreach (var leave in _leavesBlocks)
         {
             var item = Instantiate(drop, leave.transform.position, Quaternion.identity);
-            item.GetComponent<DropItemController>().qunatity = dropQuantity;
+            item.GetComponent<DropItemController>().quantity = dropQuantity;
             Destroy(leave);
         }
     }

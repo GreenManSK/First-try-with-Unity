@@ -6,6 +6,7 @@ TagManager:
   tags:
   - Destroyable
   - Drop
+  - TextEffectCanvas
   layers:
   - Default
   - TransparentFX

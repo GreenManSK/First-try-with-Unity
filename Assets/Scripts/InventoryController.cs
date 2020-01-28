@@ -1,14 +1,16 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Constants;
 using UnityEngine;
 
 public class InventoryController : MonoBehaviour
 {
-    private Dictionary<DropType, int> inventory;
+    public Dictionary<DropType, int> inventory;
 
     private void Start()
     {
+        inventory = new Dictionary<DropType, int>();
         var types = Enum.GetValues(typeof(DropType)).Cast<DropType>();
         foreach (var type in types)
         {
@@ -20,7 +22,7 @@ public class InventoryController : MonoBehaviour
     {
         return inventory[type];
     }
-    
+
     public void Add(DropType type, int volume)
     {
         inventory[type] += volume;
@@ -32,5 +34,13 @@ public class InventoryController : MonoBehaviour
             return false;
         inventory[type] -= volume;
         return true;
+    }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (!other.gameObject.CompareTag(Tags.Drop)) return;
+        var drop = other.gameObject.GetComponent<DropItemController>();
+        Add(drop.type, drop.quantity);
+        drop.Collect();
     }
 }

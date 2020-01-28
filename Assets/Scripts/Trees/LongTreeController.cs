@@ -98,7 +98,7 @@ public class LongTreeController : MonoBehaviour
         _leaves.ForEach(l =>
         {
             var item = Instantiate(drop, l.transform.position, Quaternion.identity);
-            item.GetComponent<DropItemController>().qunatity = dropQuantity;
+            item.GetComponent<DropItemController>().quantity = dropQuantity;
             Destroy(l);
         });
         ShowStump();
