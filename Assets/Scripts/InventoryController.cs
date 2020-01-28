@@ -8,6 +8,7 @@ public class InventoryController : MonoBehaviour
 {
     public Dictionary<DropType, int> inventory;
 
+    private bool _isColliding;
     private void Start()
     {
         inventory = new Dictionary<DropType, int>();
@@ -39,8 +40,11 @@ public class InventoryController : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D other)
     {
         if (!other.gameObject.CompareTag(Tags.Drop)) return;
+        if(_isColliding) return;
+        _isColliding = true;
         var drop = other.gameObject.GetComponent<DropItemController>();
         Add(drop.type, drop.quantity);
         drop.Collect();
+        _isColliding = false;
     }
 }
