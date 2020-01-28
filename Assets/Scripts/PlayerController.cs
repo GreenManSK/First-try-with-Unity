@@ -15,7 +15,7 @@ internal enum MoveType
 [RequireComponent(typeof(Rigidbody2D))]
 public class PlayerController : MonoBehaviour
 {
-    private const float ToolDistance = .7f;
+    private const float ToolDistance = .6f;
     private static readonly int AnimatorMoveX = Animator.StringToHash("Move X");
     private static readonly int AnimatorMoveY = Animator.StringToHash("Move Y");
 
