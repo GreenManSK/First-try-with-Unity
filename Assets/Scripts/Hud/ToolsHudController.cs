@@ -7,7 +7,7 @@ namespace Hud
     {
 
         private const float WindowBaseX = -2.125f;
-        private const float WindowBaseY = 0.125f;
+        private const float WindowBaseY = 0.0625f;
         private const float WindowBaseXDelta = 1;
     
         public PlayerController Player;
@@ -16,7 +16,7 @@ namespace Hud
         private List<ToolsHudWindowController> _windows;
         protected new void Start()
         {
-            X = HudController.GetWidth() / 2f;
+            X = HudController.GetWidth() / 2f - 4/16f;
             Y = HudController.GetHeight() / 2f;
             base.Start();
 
