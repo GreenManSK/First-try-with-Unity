@@ -1,22 +1,25 @@
 ﻿using System.Collections.Generic;
+using Constants;
 using UnityEngine;
 
 namespace Hud
 {
     public class ToolsHudController : ASubHudController
     {
-
+        private const float ImageWidth = 52f / Game.PPU;
+        
         private const float WindowBaseX = -2.125f;
         private const float WindowBaseY = 0.0625f;
         private const float WindowBaseXDelta = 1;
-    
+
         public PlayerController Player;
         public GameObject ToolsHudWindowPrefab;
 
         private List<ToolsHudWindowController> _windows;
+
         protected new void Start()
         {
-            X = HudController.GetWidth() / 2f - 4/16f;
+            X = ImageWidth / 2;
             Y = HudController.GetHeight() / 2f;
             base.Start();
 
@@ -37,6 +40,7 @@ namespace Hud
                 hudWindow.SetActive(false);
                 _windows.Add(hudWindow);
             }
+
             Player.ToolChanged += RefreshWindows;
             _windows[Player.GetActiveToolIndex()].SetActive(true);
         }
@@ -47,6 +51,7 @@ namespace Hud
             {
                 window.SetActive(false);
             }
+
             _windows[activeIndex].SetActive(true);
         }
     }

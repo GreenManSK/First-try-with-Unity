@@ -39,13 +39,18 @@ public class DropItemController : MonoBehaviour
         Destroy(gameObject, delay);
     }
 
+    public bool isCollected()
+    {
+        return _collected;
+    }
+    
     private void DisplayText()
     {
         var canvas = GameObject.FindWithTag(Tags.TextEffectCanvas);
         if (canvas != null)
         {
             var position = transform.position;
-            SpawnText(canvas.gameObject, position + Vector3.up - new Vector3(-1/16f, 1/16f, 0)).color = Colors.White;
+            SpawnText(canvas.gameObject, position + Vector3.up - new Vector3(-Game.PIXEL, Game.PIXEL, 0)).color = Colors.White;
             SpawnText(canvas.gameObject, position + Vector3.up);
         }
     }
