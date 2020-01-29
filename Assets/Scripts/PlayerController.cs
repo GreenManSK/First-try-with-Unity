@@ -75,9 +75,9 @@ public class PlayerController : MonoBehaviour
         _controlls.Gameplay.ToolChange.performed += ctx => ChangeTool(ctx.ReadValue<float>() < 0);
         _controlls.Gameplay.ToolChangeNumbers.performed += ctx =>
         {
-            if (ctx.control is KeyControl)
+            if (ctx.control is KeyControl control)
             {
-                ChangeTool(InputHelper.KeyToNumber(((KeyControl) ctx.control).keyCode) - 1);
+                ChangeTool(InputHelper.KeyToNumber(control.keyCode) - 1);
             }
         };
         _controlls.Gameplay.ToolNext.performed += ctx => ChangeTool(true);
@@ -102,8 +102,15 @@ public class PlayerController : MonoBehaviour
     {
         if (_usingTool || _movement == Vector2.zero)
             return;
+        
+        if (_movement.magnitude < 0.01f)
+            return;
         _animator.SetFloat(AnimatorMoveX, _movement.x);
         _animator.SetFloat(AnimatorMoveY, _movement.y);
+        if (_movement != Vector2.zero)
+        {
+            _rotation = Mathf.Round((Mathf.Atan2(_movement.y, _movement.x) * Mathf.Rad2Deg + 90f) / 90f) * 90f;
+        }
     }
 
     private void FixedUpdate()
@@ -111,10 +118,6 @@ public class PlayerController : MonoBehaviour
         if (_usingTool)
             return;
         _rigidbody2D.MovePosition(_rigidbody2D.position + moveSpeed * Time.fixedDeltaTime * _movement);
-        if (_movement != Vector2.zero)
-        {
-            _rotation = Mathf.Round((Mathf.Atan2(_movement.y, _movement.x) * Mathf.Rad2Deg + 90f) / 90f) * 90f;
-        }
     }
 
     private void UseTool(MoveType type)
