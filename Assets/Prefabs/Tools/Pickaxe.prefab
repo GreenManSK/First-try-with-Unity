@@ -46,6 +46,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -213,7 +214,7 @@ MonoBehaviour:
     _keyValues: 0000000001000000
     _keys: 0000000001000000
     _values:
-    - 1
+    - 1000
     - 0.2
 --- !u!95 &3297965802052214044
 Animator:

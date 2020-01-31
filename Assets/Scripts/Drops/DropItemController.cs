@@ -64,4 +64,12 @@ public class DropItemController : MonoBehaviour
         text.text = quantity.ToString();
         return text;
     }
+
+    private void OnTriggerEnter2D(Collider2D other)
+    {
+        if (other.gameObject.CompareTag(Tags.DropDeleter))
+        {
+            Destroy(gameObject);
+        }
+    }
 }

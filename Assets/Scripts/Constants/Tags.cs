@@ -6,6 +6,7 @@ namespace Constants
         public const string Player = "Player";
         public const string Drop = "Drop";
         public const string TextEffectCanvas = "TextEffectCanvas";
+        public const string DropDeleter = "DropDeleter";
 
         private Tags()
         {
