@@ -44,7 +44,7 @@ namespace Trees
 
             foreach (var r in renderers)
             {
-                if (r.material.HasProperty("_Color"))
+                if (!r.gameObject.CompareTag(Tags.Drop) && r.material.HasProperty("_Color"))
                     _materials.Add(r.material);
             }
         }
