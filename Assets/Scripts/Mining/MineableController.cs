@@ -39,6 +39,7 @@ namespace Mining
         private Animator _animator;
         private AudioSource _audioSource;
         private float _durability;
+        private bool _destroyed;
         private ParticleSystem _miningParticles;
 
         private void Start()
@@ -61,14 +62,17 @@ namespace Mining
 
         public void Damage(ToolController tool)
         {
+            if (_destroyed)
+                return;
             _durability -= tool.GetPower() * effectivity[tool.type];
             Damaged?.Invoke(_durability / maxDurability);
 
             if (_animator != null)
                 _animator.SetFloat(AnimationTime, 1 - _durability / maxDurability - 0.001f);
 
-            if (_durability <= 0)
+            if (_durability <= 0 && !_destroyed)
             {
+                _destroyed = true;
                 _audioSource.PlayOneShot(destroySound);
                 SpawnDrop();
                 Destroy(gameObject, destroySound.length);

@@ -18,6 +18,7 @@ namespace Tools
 
         public ToolType type;
         public float basePower = 1f;
+        public float baseSpeed = 1f;
 
         public AttackPowerDictionary attackPowers = new AttackPowerDictionary
         {
@@ -34,6 +35,7 @@ namespace Tools
         {
             _attackType = AttackType.Stab;
             _animator = GetComponent<Animator>();
+            _animator.speed = baseSpeed;
             _animator.SetTrigger(StabAnimationTrigger);
         }
 
@@ -41,6 +43,7 @@ namespace Tools
         {
             _attackType = AttackType.Swing;
             _animator = GetComponent<Animator>();
+            _animator.speed = baseSpeed;
             _animator.SetTrigger(SwingAnimationTrigger);
         }
 
