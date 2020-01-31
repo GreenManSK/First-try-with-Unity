@@ -48,6 +48,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   type: 0
   basePower: 1
+  baseSpeed: 1
   attackPowers:
     reorderableList:
       canAdd: 1
@@ -162,6 +163,7 @@ SpriteRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
