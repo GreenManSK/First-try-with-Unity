@@ -11,7 +11,8 @@ public class DropItemController : MonoBehaviour
 
     public AudioClip pickUpSound;
     public GameObject textEffect;
-
+    public GameObject destroyEffect;
+    
     private AudioSource _audioSource;
     private bool _collected;
 
@@ -69,6 +70,7 @@ public class DropItemController : MonoBehaviour
     {
         if (other.gameObject.CompareTag(Tags.DropDeleter))
         {
+            Instantiate(destroyEffect, transform.position, Quaternion.identity);
             Destroy(gameObject);
         }
     }
