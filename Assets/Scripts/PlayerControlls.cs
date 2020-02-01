@@ -73,6 +73,14 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""expectedControlType"": """",
                     ""processors"": """",
                     ""interactions"": """"
+                },
+                {
+                    ""name"": ""Pause"",
+                    ""type"": ""Button"",
+                    ""id"": ""55b3edbb-7c7b-4b45-8c3d-d5f96c369b49"",
+                    ""expectedControlType"": """",
+                    ""processors"": """",
+                    ""interactions"": """"
                 }
             ],
             ""bindings"": [
@@ -394,6 +402,17 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""action"": ""ToolChangeNumbers"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
+                },
+                {
+                    ""name"": """",
+                    ""id"": ""b273617f-0095-44a0-8ff1-b4a95c1b208f"",
+                    ""path"": ""<Keyboard>/escape"",
+                    ""interactions"": """",
+                    ""processors"": """",
+                    ""groups"": """",
+                    ""action"": ""Pause"",
+                    ""isComposite"": false,
+                    ""isPartOfComposite"": false
                 }
             ]
         }
@@ -409,6 +428,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         m_Gameplay_ToolPrev = m_Gameplay.FindAction("ToolPrev", throwIfNotFound: true);
         m_Gameplay_ToolNext = m_Gameplay.FindAction("ToolNext", throwIfNotFound: true);
         m_Gameplay_ToolChangeNumbers = m_Gameplay.FindAction("ToolChangeNumbers", throwIfNotFound: true);
+        m_Gameplay_Pause = m_Gameplay.FindAction("Pause", throwIfNotFound: true);
     }
 
     public void Dispose()
@@ -465,6 +485,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputAction m_Gameplay_ToolPrev;
     private readonly InputAction m_Gameplay_ToolNext;
     private readonly InputAction m_Gameplay_ToolChangeNumbers;
+    private readonly InputAction m_Gameplay_Pause;
     public struct GameplayActions
     {
         private @PlayerControlls m_Wrapper;
@@ -476,6 +497,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         public InputAction @ToolPrev => m_Wrapper.m_Gameplay_ToolPrev;
         public InputAction @ToolNext => m_Wrapper.m_Gameplay_ToolNext;
         public InputAction @ToolChangeNumbers => m_Wrapper.m_Gameplay_ToolChangeNumbers;
+        public InputAction @Pause => m_Wrapper.m_Gameplay_Pause;
         public InputActionMap Get() { return m_Wrapper.m_Gameplay; }
         public void Enable() { Get().Enable(); }
         public void Disable() { Get().Disable(); }
@@ -506,6 +528,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @ToolChangeNumbers.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChangeNumbers;
                 @ToolChangeNumbers.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChangeNumbers;
                 @ToolChangeNumbers.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChangeNumbers;
+                @Pause.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
+                @Pause.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnPause;
             }
             m_Wrapper.m_GameplayActionsCallbackInterface = instance;
             if (instance != null)
@@ -531,6 +556,9 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @ToolChangeNumbers.started += instance.OnToolChangeNumbers;
                 @ToolChangeNumbers.performed += instance.OnToolChangeNumbers;
                 @ToolChangeNumbers.canceled += instance.OnToolChangeNumbers;
+                @Pause.started += instance.OnPause;
+                @Pause.performed += instance.OnPause;
+                @Pause.canceled += instance.OnPause;
             }
         }
     }
@@ -544,5 +572,6 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         void OnToolPrev(InputAction.CallbackContext context);
         void OnToolNext(InputAction.CallbackContext context);
         void OnToolChangeNumbers(InputAction.CallbackContext context);
+        void OnPause(InputAction.CallbackContext context);
     }
 }

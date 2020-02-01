@@ -20,13 +20,13 @@ public class PlayerController : MonoBehaviour
     private static readonly int AnimatorMoveY = Animator.StringToHash("Move Y");
 
     public delegate void ToolChangeDelegate(int activeIndex);
-    
+
     public float moveSpeed = 5f;
     public GameObject activeTool;
     public List<GameObject> tools;
-    
+
     public event ToolChangeDelegate ToolChanged;
-    
+
     private PlayerControlls _controlls;
     private Rigidbody2D _rigidbody2D;
     private Animator _animator;
@@ -82,6 +82,8 @@ public class PlayerController : MonoBehaviour
         };
         _controlls.Gameplay.ToolNext.performed += ctx => ChangeTool(true);
         _controlls.Gameplay.ToolPrev.performed += ctx => ChangeTool(false);
+
+        _controlls.Gameplay.Pause.performed += ctx => PauseController.Toggle();
     }
 
     private void ChangeTool(bool next)
@@ -102,7 +104,7 @@ public class PlayerController : MonoBehaviour
     {
         if (_usingTool || _movement == Vector2.zero)
             return;
-        
+
         if (_movement.magnitude < 0.01f)
             return;
         _animator.SetFloat(AnimatorMoveX, _movement.x);
