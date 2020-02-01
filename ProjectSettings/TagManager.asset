@@ -8,6 +8,7 @@ TagManager:
   - Drop
   - TextEffectCanvas
   - DropDeleter
+  - Tool
   layers:
   - Default
   - TransparentFX
