@@ -7,7 +7,7 @@ public class GameController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        AudioListener.volume = .5f;
+        AudioListener.volume = .1f;
     }
     
     void OnGUI()
