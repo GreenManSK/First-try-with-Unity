@@ -93,7 +93,7 @@ public class PlayerController : MonoBehaviour
 
     private void ChangeTool(int index)
     {
-        if (tools.Count == 0)
+        if (tools.Count == 0 || PauseController.isGamePaused)
             return;
         _activeToolIndex = index % tools.Count;
         activeTool = tools[_activeToolIndex];
@@ -102,7 +102,7 @@ public class PlayerController : MonoBehaviour
 
     private void Update()
     {
-        if (_usingTool || _movement == Vector2.zero)
+        if (PauseController.isGamePaused || _usingTool || _movement == Vector2.zero)
             return;
 
         if (_movement.magnitude < 0.01f)
@@ -124,7 +124,7 @@ public class PlayerController : MonoBehaviour
 
     private void UseTool(MoveType type)
     {
-        if (_usingTool || activeTool == null)
+        if (PauseController.isGamePaused || _usingTool || activeTool == null)
             return;
         Vector2 rotationVector = Quaternion.Euler(0, 0, _rotation) * Vector2.down;
         var toolGameObject = Instantiate(
