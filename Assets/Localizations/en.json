@@ -1,0 +1,55 @@
+{
+  "name": "English",
+  "groups": [
+    {
+      "name": "Menu",
+      "keyPrefix": "menu_",
+      "translations": [
+        {
+          "key": "pause",
+          "text": "PAUSED"
+        }
+      ]
+    },
+    {
+      "name": "Example",
+      "keyPrefix": "example_",
+      "translations": [
+        {
+          "text": "Hello World!",
+          "key": "hello_wrold"
+        },
+        {
+          "text": "PAUSED",
+          "key": "pause"
+        },
+        {
+          "text": "Game over!",
+          "key": "end"
+        },
+        {
+          "text": "Test string",
+          "key": "test"
+        },
+        {
+          "key": "plural_test",
+          "variants": [
+            {
+              "lowerBound": "15",
+              "text": "a lot"
+            },
+            {
+              "upperBound": "3",
+              "text": "treee"
+            },
+            {
+              "lowerBound": "4",
+              "upperBound": "15",
+              "text": "more than treee"
+            }
+          ]
+        }
+      ]
+    }
+  ]
+}
