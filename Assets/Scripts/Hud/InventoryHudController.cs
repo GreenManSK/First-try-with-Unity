@@ -7,7 +7,7 @@ namespace Hud
 {
     public class InventoryHudController : ASubHudController
     {
-        private const float ImageHeight = 13f / Game.PPU;
+        private const float ImageHeight = 14f / Game.PPU;
 
         public TextDictionary texts = new TextDictionary();
         public InventoryController inventory;
@@ -18,7 +18,7 @@ namespace Hud
             base.Start();
             foreach (var pair in texts)
             {
-                pair.Value.text = inventory.Get(pair.Key).ToString();
+//                pair.Value.text = inventory.Get(pair.Key).ToString();
             }
 
             inventory.Changed += UpdateText;
