@@ -1,18 +1,16 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
 
 public class PauseController : MonoBehaviour
 {
     public static bool isGamePaused;
 
-    private static Text _text;
+    private static TextMeshProUGUI _text;
     private static string _textValue;
 
     private void Start()
     {
-        _text = GetComponent<Text>();
+        _text = GetComponent<TextMeshProUGUI>();
         _textValue = _text.text;
         _text.text = "";
     }

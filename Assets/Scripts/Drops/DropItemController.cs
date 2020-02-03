@@ -1,8 +1,6 @@
-﻿using System.Diagnostics;
-using Constants;
+﻿using Constants;
+using TMPro;
 using UnityEngine;
-using UnityEngine.UI;
-using Debug = UnityEngine.Debug;
 
 public class DropItemController : MonoBehaviour
 {
@@ -12,7 +10,7 @@ public class DropItemController : MonoBehaviour
     public AudioClip pickUpSound;
     public GameObject textEffect;
     public GameObject destroyEffect;
-    
+
     private AudioSource _audioSource;
     private bool _collected;
 
@@ -44,34 +42,31 @@ public class DropItemController : MonoBehaviour
     {
         return _collected;
     }
-    
+
     private void DisplayText()
     {
         var canvas = GameObject.FindWithTag(Tags.TextEffectCanvas);
-        if (canvas != null)
-        {
-            var position = transform.position;
-            SpawnText(canvas.gameObject, position + Vector3.up - new Vector3(-Game.PIXEL, Game.PIXEL, 0)).color = Colors.White;
-            SpawnText(canvas.gameObject, position + Vector3.up);
-        }
+        if (canvas == null) return;
+        var position = transform.position;
+        SpawnText(canvas.gameObject, position + Vector3.up);
+        SpawnText(canvas.gameObject, position + Vector3.up - new Vector3(Game.PIXEL, -Game.PIXEL, 0)).color =
+            Colors.White;
     }
 
-    private Text SpawnText(GameObject canvas, Vector3 position)
+    private TextMeshProUGUI SpawnText(GameObject canvas, Vector3 position)
     {
         var gameObject = Instantiate(textEffect, transform.position, Quaternion.identity);
         gameObject.transform.SetParent(canvas.transform, false);
         gameObject.GetComponent<RectTransform>().anchoredPosition3D = position;
-        var text = gameObject.GetComponent<Text>();
+        var text = gameObject.GetComponent<TextMeshProUGUI>();
         text.text = quantity.ToString();
         return text;
     }
 
     private void OnTriggerEnter2D(Collider2D other)
     {
-        if (other.gameObject.CompareTag(Tags.DropDeleter))
-        {
-            Instantiate(destroyEffect, transform.position, Quaternion.identity);
-            Destroy(gameObject);
-        }
+        if (!other.gameObject.CompareTag(Tags.DropDeleter)) return;
+        Instantiate(destroyEffect, transform.position, Quaternion.identity);
+        Destroy(gameObject);
     }
 }

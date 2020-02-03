@@ -1,7 +1,7 @@
 using System;
 using Constants;
 using RotaryHeart.Lib.SerializableDictionary;
-using UnityEngine.UI;
+using TMPro;
 
 namespace Hud
 {
@@ -11,7 +11,7 @@ namespace Hud
 
         public TextDictionary texts = new TextDictionary();
         public InventoryController inventory;
-        
+
         protected new void Start()
         {
             Y = (-HudController.GetHeight() + ImageHeight) / 2f;
@@ -34,7 +34,7 @@ namespace Hud
     }
 
     [Serializable]
-    public class TextDictionary : SerializableDictionaryBase<DropType, Text>
+    public class TextDictionary : SerializableDictionaryBase<DropType, TextMeshProUGUI>
     {
     }
 }

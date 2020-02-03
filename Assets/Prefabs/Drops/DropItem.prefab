@@ -68,7 +68,7 @@ MonoBehaviour:
   type: 3
   quantity: 1
   pickUpSound: {fileID: 8300000, guid: d5cf78dd74f78cc4d988480d28ce024a, type: 3}
-  textEffect: {fileID: 9150127260248132381, guid: a4f039e2e675727458352854f20ebd31,
+  textEffect: {fileID: 3398446693695017672, guid: 9783f8b79e26f6346beb9133aba38332,
     type: 3}
   destroyEffect: {fileID: 4979197577993095941, guid: 52538c7b5b1782045add55eb743d3077,
     type: 3}
