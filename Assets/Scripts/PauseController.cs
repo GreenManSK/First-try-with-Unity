@@ -1,4 +1,5 @@
-﻿using TMPro;
+﻿using LocalizationHelper;
+using TMPro;
 using UnityEngine;
 
 public class PauseController : MonoBehaviour
@@ -11,7 +12,7 @@ public class PauseController : MonoBehaviour
     private void Start()
     {
         _text = GetComponent<TextMeshProUGUI>();
-        _textValue = _text.text;
+        _textValue = Localization._(_text.text);
         _text.text = "";
     }
 
