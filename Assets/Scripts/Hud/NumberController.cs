@@ -12,46 +12,54 @@ namespace Hud
         public float digitSize = 4 * Game.PIXEL;
         public float gapSize = 1 * Game.PIXEL;
 
-        private Animator[] _animators;
+        private GameObject[] digits;
         private static readonly int Time = Animator.StringToHash("Time");
 
         private void Awake()
         {
-            if (_animators != null)
+            if (digits != null)
                 return;
-            _animators = new Animator[size];
+            digits = new GameObject[size];
             for (var i = 0; i < size; ++i)
             {
-                _animators[i] = CreateDigit(transform.position - new Vector3(i * (digitSize + gapSize), 0, 0));
+                digits[i] = CreateDigit(GetPosition(i));
             }
 
             SetValue(defaultValue);
         }
 
+        private Vector3 GetPosition(int i)
+        {
+            return transform.position - new Vector3(i * (digitSize + gapSize), 0, 0);
+        }
+
         public void SetValue(int value)
         {
+            var ones = 0;
             for (var i = 0; i < size; ++i)
             {
-                var animator = _animators[i];
+                var digit = digits[i];
                 if (value != 0 || i == 0)
                 {
-                    animator.gameObject.SetActive(true);
+                    digit.SetActive(true);
                     var d = value % 10;
                     value /= 10;
-                    animator.SetFloat(Time, d * 0.1f);
+                    digit.GetComponent<Animator>().SetFloat(Time, d * 0.1f);
+                    digit.transform.position = GetPosition(i) + new Vector3(2 * ones * Game.PIXEL, 0, 0);
+                    ones += d == 1 ? 1 : 0;
                 }
                 else
                 {
-                    animator.gameObject.SetActive(false);
+                    digit.SetActive(false);
                 }
             }
         }
 
-        private Animator CreateDigit(Vector3 position)
+        private GameObject CreateDigit(Vector3 position)
         {
             var digitObject = Instantiate(digit, position, Quaternion.identity);
             digitObject.transform.SetParent(transform, true);
-            return digitObject.GetComponent<Animator>();
+            return digitObject;
         }
     }
 }
