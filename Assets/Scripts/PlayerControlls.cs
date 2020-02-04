@@ -27,7 +27,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Stab"",
+                    ""name"": ""Swing"",
                     ""type"": ""Button"",
                     ""id"": ""d4e19460-e4e1-46dc-a46f-11dcd2717a8f"",
                     ""expectedControlType"": """",
@@ -35,7 +35,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """"
                 },
                 {
-                    ""name"": ""Swing"",
+                    ""name"": ""Stab"",
                     ""type"": ""Button"",
                     ""id"": ""2394f2b4-4296-41a8-b19a-35f11483832f"",
                     ""expectedControlType"": """",
@@ -223,7 +223,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Stab"",
+                    ""action"": ""Swing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -234,7 +234,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Stab"",
+                    ""action"": ""Swing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -245,7 +245,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Stab"",
+                    ""action"": ""Swing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -256,7 +256,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Stab"",
+                    ""action"": ""Swing"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -267,7 +267,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Swing"",
+                    ""action"": ""Stab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -278,7 +278,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Swing"",
+                    ""action"": ""Stab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -289,7 +289,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Swing"",
+                    ""action"": ""Stab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -300,7 +300,7 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                     ""interactions"": """",
                     ""processors"": """",
                     ""groups"": """",
-                    ""action"": ""Swing"",
+                    ""action"": ""Stab"",
                     ""isComposite"": false,
                     ""isPartOfComposite"": false
                 },
@@ -444,8 +444,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         // Gameplay
         m_Gameplay = asset.FindActionMap("Gameplay", throwIfNotFound: true);
         m_Gameplay_Move = m_Gameplay.FindAction("Move", throwIfNotFound: true);
-        m_Gameplay_Stab = m_Gameplay.FindAction("Stab", throwIfNotFound: true);
         m_Gameplay_Swing = m_Gameplay.FindAction("Swing", throwIfNotFound: true);
+        m_Gameplay_Stab = m_Gameplay.FindAction("Stab", throwIfNotFound: true);
         m_Gameplay_ToolChange = m_Gameplay.FindAction("ToolChange", throwIfNotFound: true);
         m_Gameplay_ToolPrev = m_Gameplay.FindAction("ToolPrev", throwIfNotFound: true);
         m_Gameplay_ToolNext = m_Gameplay.FindAction("ToolNext", throwIfNotFound: true);
@@ -501,8 +501,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     private readonly InputActionMap m_Gameplay;
     private IGameplayActions m_GameplayActionsCallbackInterface;
     private readonly InputAction m_Gameplay_Move;
-    private readonly InputAction m_Gameplay_Stab;
     private readonly InputAction m_Gameplay_Swing;
+    private readonly InputAction m_Gameplay_Stab;
     private readonly InputAction m_Gameplay_ToolChange;
     private readonly InputAction m_Gameplay_ToolPrev;
     private readonly InputAction m_Gameplay_ToolNext;
@@ -513,8 +513,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
         private @PlayerControlls m_Wrapper;
         public GameplayActions(@PlayerControlls wrapper) { m_Wrapper = wrapper; }
         public InputAction @Move => m_Wrapper.m_Gameplay_Move;
-        public InputAction @Stab => m_Wrapper.m_Gameplay_Stab;
         public InputAction @Swing => m_Wrapper.m_Gameplay_Swing;
+        public InputAction @Stab => m_Wrapper.m_Gameplay_Stab;
         public InputAction @ToolChange => m_Wrapper.m_Gameplay_ToolChange;
         public InputAction @ToolPrev => m_Wrapper.m_Gameplay_ToolPrev;
         public InputAction @ToolNext => m_Wrapper.m_Gameplay_ToolNext;
@@ -532,12 +532,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Move.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
                 @Move.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnMove;
-                @Stab.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStab;
-                @Stab.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStab;
-                @Stab.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStab;
                 @Swing.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwing;
                 @Swing.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwing;
                 @Swing.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnSwing;
+                @Stab.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStab;
+                @Stab.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStab;
+                @Stab.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnStab;
                 @ToolChange.started -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChange;
                 @ToolChange.performed -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChange;
                 @ToolChange.canceled -= m_Wrapper.m_GameplayActionsCallbackInterface.OnToolChange;
@@ -560,12 +560,12 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
                 @Move.started += instance.OnMove;
                 @Move.performed += instance.OnMove;
                 @Move.canceled += instance.OnMove;
-                @Stab.started += instance.OnStab;
-                @Stab.performed += instance.OnStab;
-                @Stab.canceled += instance.OnStab;
                 @Swing.started += instance.OnSwing;
                 @Swing.performed += instance.OnSwing;
                 @Swing.canceled += instance.OnSwing;
+                @Stab.started += instance.OnStab;
+                @Stab.performed += instance.OnStab;
+                @Stab.canceled += instance.OnStab;
                 @ToolChange.started += instance.OnToolChange;
                 @ToolChange.performed += instance.OnToolChange;
                 @ToolChange.canceled += instance.OnToolChange;
@@ -588,8 +588,8 @@ public class @PlayerControlls : IInputActionCollection, IDisposable
     public interface IGameplayActions
     {
         void OnMove(InputAction.CallbackContext context);
-        void OnStab(InputAction.CallbackContext context);
         void OnSwing(InputAction.CallbackContext context);
+        void OnStab(InputAction.CallbackContext context);
         void OnToolChange(InputAction.CallbackContext context);
         void OnToolPrev(InputAction.CallbackContext context);
         void OnToolNext(InputAction.CallbackContext context);
