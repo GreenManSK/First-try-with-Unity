@@ -18,7 +18,7 @@ namespace Hud
             base.Start();
             foreach (var pair in texts)
             {
-//                pair.Value.text = inventory.Get(pair.Key).ToString();
+                pair.Value.SetValue(inventory.Get(pair.Key));
             }
 
             inventory.Changed += UpdateText;
@@ -28,13 +28,13 @@ namespace Hud
         {
             if (texts.ContainsKey(type))
             {
-                texts[type].text = newVolume.ToString();
+                texts[type].SetValue(newVolume);
             }
         }
     }
 
     [Serializable]
-    public class TextDictionary : SerializableDictionaryBase<DropType, TextMeshProUGUI>
+    public class TextDictionary : SerializableDictionaryBase<DropType, NumberController>
     {
     }
 }

@@ -15,8 +15,10 @@ namespace Hud
         private Animator[] _animators;
         private static readonly int Time = Animator.StringToHash("Time");
 
-        private void Start()
+        private void Awake()
         {
+            if (_animators != null)
+                return;
             _animators = new Animator[size];
             for (var i = 0; i < size; ++i)
             {
@@ -31,7 +33,7 @@ namespace Hud
             for (var i = 0; i < size; ++i)
             {
                 var animator = _animators[i];
-                if (value != 0)
+                if (value != 0 || i == 0)
                 {
                     animator.gameObject.SetActive(true);
                     var d = value % 10;
